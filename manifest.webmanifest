@@ -1,0 +1,10 @@
+{
+  "name": "泰语学习句子库",
+  "short_name": "泰语学习",
+  "description": "点句子可发音、可查看解析的泰语学习网页",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f1e8",
+  "theme_color": "#f4efe6",
+  "icons": []
+}

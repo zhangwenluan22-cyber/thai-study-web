@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4efe6" />
+    <meta
+      name="description"
+      content="可在手机和电脑上使用的泰语学习网页，支持点句子发音、分类筛选和学习解析。"
+    />
+    <title>泰语学习句子库</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__text">
+          <p class="eyebrow">Thai Study Companion</p>
+          <h1>泰语学习句子库</h1>
+          <p class="hero__summary">
+            点一下句子就能朗读，顺手看中文、罗马音和学习解析。手机和电脑都能打开，适合你自己学，也方便分享给朋友。
+          </p>
+        </div>
+        <div class="hero__stats">
+          <div class="stat-card">
+            <span class="stat-card__label">总句子</span>
+            <strong id="stat-total">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">当前显示</span>
+            <strong id="stat-visible">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">收藏</span>
+            <strong id="stat-favorites">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel panel--filters">
+          <div class="panel__header">
+            <h2>学习筛选</h2>
+            <button id="random-btn" class="ghost-button" type="button">随机一句</button>
+          </div>
+
+          <label class="field">
+            <span>搜索</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="搜中文、泰语、罗马音或分类"
+              autocomplete="off"
+            />
+          </label>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>一级场景</span>
+              <select id="primary-filter">
+                <option value="">全部</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>二级场景</span>
+              <select id="secondary-filter">
+                <option value="">全部</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>难度</span>
+              <select id="difficulty-filter">
+                <option value="">全部</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <label class="checkbox">
+              <input id="favorites-only" type="checkbox" />
+              <span>只看收藏</span>
+            </label>
+            <label class="checkbox">
+              <input id="auto-play" type="checkbox" checked />
+              <span>点开时自动朗读</span>
+            </label>
+          </div>
+
+          <div class="voice-box">
+            <div>
+              <p class="voice-box__title">发音方式</p>
+              <p class="voice-box__hint">
+                默认使用设备里的泰语语音。不同手机和电脑声音会略有差异，安装 Thai 语音包后效果通常更自然。
+              </p>
+            </div>
+            <label class="field">
+              <span>泰语声音</span>
+              <select id="voice-select">
+                <option value="">自动选择系统最佳泰语声音</option>
+              </select>
+            </label>
+            <button id="test-voice-btn" class="ghost-button" type="button">试听发音</button>
+          </div>
+        </section>
+
+        <section class="panel panel--list">
+          <div class="panel__header">
+            <h2>句子列表</h2>
+            <p id="results-hint" class="panel__hint">加载中...</p>
+          </div>
+          <div id="sentence-list" class="sentence-list" aria-live="polite"></div>
+        </section>
+
+        <aside class="panel panel--detail">
+          <div class="panel__header">
+            <h2>句子解析</h2>
+            <button id="speak-btn" class="ghost-button" type="button">朗读当前句子</button>
+          </div>
+
+          <div id="detail-empty" class="detail-empty">
+            先从左边点一句，我们会在这里显示发音、分类、学习提示和备注。
+          </div>
+
+          <article id="detail-card" class="detail-card hidden">
+            <div class="detail-card__top">
+              <div>
+                <p id="detail-category" class="detail-card__category"></p>
+                <h3 id="detail-chinese"></h3>
+              </div>
+              <button id="favorite-btn" class="favorite-button" type="button">收藏</button>
+            </div>
+
+            <div class="detail-card__thai" id="detail-thai"></div>
+            <div class="detail-card__roman" id="detail-roman"></div>
+
+            <div class="detail-card__meta">
+              <span id="detail-difficulty" class="pill"></span>
+              <span id="detail-type" class="pill"></span>
+            </div>
+
+            <section class="analysis-block">
+              <h4>怎么用</h4>
+              <p id="detail-usage"></p>
+            </section>
+
+            <section class="analysis-block">
+              <h4>学习建议</h4>
+              <p id="detail-tip"></p>
+            </section>
+
+            <section class="analysis-block">
+              <h4>拆词感知</h4>
+              <div id="detail-breakdown" class="breakdown-list"></div>
+            </section>
+
+            <section class="analysis-block">
+              <h4>延伸知识</h4>
+              <div id="detail-extensions" class="extension-list"></div>
+            </section>
+
+            <section class="analysis-block">
+              <h4>标签</h4>
+              <div id="detail-tags" class="tag-list"></div>
+            </section>
+
+            <section class="analysis-block">
+              <h4>备注</h4>
+              <p id="detail-note"></p>
+            </section>
+          </article>
+        </aside>
+      </main>
+    </div>
+
+    <template id="sentence-item-template">
+      <button class="sentence-card" type="button">
+        <div class="sentence-card__row">
+          <span class="sentence-card__category"></span>
+          <span class="sentence-card__favorite" aria-hidden="true">☆</span>
+        </div>
+        <strong class="sentence-card__thai"></strong>
+        <p class="sentence-card__chinese"></p>
+        <p class="sentence-card__roman"></p>
+      </button>
+    </template>
+
+    <script src="./sentences.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
