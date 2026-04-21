@@ -506,7 +506,7 @@ function buildBreakdownMarkup(parts) {
 
 function getVisibleBreakdownParts(item) {
   return (item.analysis.wordBreakdown || []).filter(
-    (part) => !["中文核心意思", "备注提醒"].includes(part.label),
+    (part) => !["整句泰语", "礼貌尾词", "中文核心意思", "备注提醒"].includes(part.label),
   );
 }
 
