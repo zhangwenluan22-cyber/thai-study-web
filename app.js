@@ -354,7 +354,17 @@ function renderList() {
 }
 
 function selectSentence(id, allowSpeech = false) {
+  const shouldAutoSpeak = allowSpeech && els.autoPlay.checked;
+
   if (state.selectedId === id) {
+    const current = findSentence(id);
+    if (shouldAutoSpeak && current) {
+      speak(current.thai);
+      renderList();
+      renderDetail(current);
+      return;
+    }
+
     state.selectedId = null;
     renderList();
     renderEmptyDetail();
@@ -362,13 +372,13 @@ function selectSentence(id, allowSpeech = false) {
   }
 
   state.selectedId = id;
-  renderList();
   const item = findSentence(id);
   if (!item) return;
-  renderDetail(item);
-  if (allowSpeech && els.autoPlay.checked) {
+  if (shouldAutoSpeak) {
     speak(item.thai);
   }
+  renderList();
+  renderDetail(item);
 }
 
 function renderDetail(item) {
