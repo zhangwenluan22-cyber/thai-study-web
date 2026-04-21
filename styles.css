@@ -933,19 +933,36 @@ select {
 
   .panel--list .panel__header {
     align-items: center;
+    gap: 8px;
+  }
+
+  .panel--list .panel__header h2 {
+    flex: 0 0 auto;
+    min-width: auto;
+    font-size: 16px;
+    white-space: nowrap;
   }
 
   .panel--list .panel__header-actions {
     margin-left: auto;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    gap: 6px;
+    gap: 4px;
     min-width: 0;
+    flex: 1 1 auto;
   }
 
   .panel--list .panel__hint {
-    font-size: 11px;
+    font-size: 10px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .panel--list .panel__header-actions .ghost-button {
+    min-height: 30px;
+    padding: 0 8px;
+    font-size: 10px;
   }
 
   .panel--filters .panel__header {
