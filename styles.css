@@ -203,6 +203,10 @@ select {
   padding: 22px;
 }
 
+.panel--list {
+  background: rgba(243, 235, 221, 0.88);
+}
+
 .panel__header {
   display: flex;
   justify-content: space-between;
