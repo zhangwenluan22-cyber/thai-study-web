@@ -2,7 +2,7 @@ window.THAI_STUDY_DATA = {
   "meta": {
     "title": "泰语学习句子库",
     "sourceFile": "泰语学习app_入门口语句子库_v1_0421.xlsx",
-    "recordCount": 139
+    "recordCount": 141
   },
   "sentences": [
     {
@@ -178,7 +178,7 @@ window.THAI_STUDY_DATA = {
       "thai": "หนูอยู่ที่___ค่ะ",
       "romanization": "noo yu thi ___ kha",
       "difficulty": "入门",
-      "note": "+酒店Rong Ram",
+      "note": "+酒店Rong Ramโรงแรม",
       "analysis": {
         "sentenceType": "陈述句",
         "tags": [
@@ -186,7 +186,7 @@ window.THAI_STUDY_DATA = {
           "居住地",
           "入门"
         ],
-        "usage": "+酒店Rong Ram",
+        "usage": "+酒店Rong Ramโรงแรม",
         "studyTip": "适合在“关于自己 / 居住地”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -216,7 +216,7 @@ window.THAI_STUDY_DATA = {
           },
           {
             "label": "备注提醒",
-            "value": "+酒店Rong Ram",
+            "value": "+酒店Rong Ramโรงแรม",
             "hint": "这一条来自你原始词库里的备注信息。"
           }
         ],
@@ -6712,22 +6712,29 @@ window.THAI_STUDY_DATA = {
       }
     },
     {
-      "id": 139,
-      "primaryCategory": "",
-      "secondaryCategory": "",
+      "id": 157,
+      "primaryCategory": "补充词汇",
+      "secondaryCategory": "食物",
       "chinese": "点心零食",
-      "thai": "",
+      "thai": "ขนม",
       "romanization": "kanom",
       "difficulty": "补充",
-      "note": "",
+      "note": "2026-04-22 新增",
       "analysis": {
         "sentenceType": "陈述句",
         "tags": [
+          "补充词汇",
+          "食物",
           "补充"
         ],
-        "usage": "这是一个常用陈述句，可以先把整句当作固定表达来记。",
-        "studyTip": "适合在“ / ”这个场景先整句记忆，再跟读两到三遍。",
+        "usage": "2026-04-22 新增",
+        "studyTip": "适合在“补充词汇 / 食物”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "ขนม",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
           {
             "label": "发音拆分",
             "value": "kanom",
@@ -6737,10 +6744,108 @@ window.THAI_STUDY_DATA = {
             "label": "中文核心意思",
             "value": "点心零食",
             "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "2026-04-22 新增",
+            "hint": "这一条来自你原始词库里的备注信息。"
           }
         ],
         "extensions": [
-          "延伸练习：把这句放进“ / ”场景里，连续说三遍，练顺嘴感。",
+          "延伸练习：把这句放进“补充词汇 / 食物”场景里，连续说三遍，练顺嘴感。",
+          "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。",
+          "场景联想：这句和吃喝点餐相关，适合配合餐厅或便利店情景一起记。"
+        ]
+      }
+    },
+    {
+      "id": 158,
+      "primaryCategory": "补充词汇",
+      "secondaryCategory": "时间",
+      "chinese": "时间",
+      "thai": "เวลา",
+      "romanization": "we-laa",
+      "difficulty": "补充",
+      "note": "2026-04-22 新增",
+      "analysis": {
+        "sentenceType": "陈述句",
+        "tags": [
+          "补充词汇",
+          "时间",
+          "补充"
+        ],
+        "usage": "2026-04-22 新增",
+        "studyTip": "适合在“补充词汇 / 时间”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "เวลา",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "we-laa",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "时间",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "2026-04-22 新增",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“补充词汇 / 时间”场景里，连续说三遍，练顺嘴感。",
+          "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。"
+        ]
+      }
+    },
+    {
+      "id": 159,
+      "primaryCategory": "补充词汇",
+      "secondaryCategory": "时间",
+      "chinese": "现在几点了",
+      "thai": "ตอนนี้กี่โมงแล้วคะ",
+      "romanization": "ton ni ki mong laeo kha",
+      "difficulty": "补充",
+      "note": "2026-04-22 新增",
+      "analysis": {
+        "sentenceType": "陈述句",
+        "tags": [
+          "补充词汇",
+          "时间",
+          "补充"
+        ],
+        "usage": "2026-04-22 新增",
+        "studyTip": "适合在“补充词汇 / 时间”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "ตอนนี้กี่โมงแล้วคะ",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "ton / ni / ki / mong",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "现在几点了",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "2026-04-22 新增",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“补充词汇 / 时间”场景里，连续说三遍，练顺嘴感。",
           "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。"
         ]
       }
