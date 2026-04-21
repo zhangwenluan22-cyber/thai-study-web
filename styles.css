@@ -57,7 +57,7 @@ select {
 .practice-panel {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr;
-  gap: 20px;
+  gap: 0;
   margin-bottom: 20px;
 }
 
@@ -80,6 +80,19 @@ select {
 .practice-panel__copy,
 .practice-panel__box {
   padding: 24px 26px;
+}
+
+.practice-panel__copy {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  padding-right: 18px;
+}
+
+.practice-panel__box {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 18px;
 }
 
 .practice-panel h2 {
@@ -548,6 +561,26 @@ select {
 
   .practice-panel {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .practice-panel__copy {
+    border-top-right-radius: var(--radius-lg);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid var(--line);
+    border-bottom: none;
+    padding-right: 26px;
+    padding-bottom: 10px;
+  }
+
+  .practice-panel__box {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--radius-lg);
+    padding-left: 26px;
+    padding-top: 8px;
+    margin-top: -1px;
   }
 
   .layout {
@@ -574,6 +607,15 @@ select {
   .practice-panel__box,
   .panel {
     padding: 18px;
+  }
+
+  .practice-panel__copy {
+    padding-bottom: 8px;
+  }
+
+  .practice-panel__box {
+    padding-top: 6px;
+    margin-top: -1px;
   }
 
   .hero__stats {
