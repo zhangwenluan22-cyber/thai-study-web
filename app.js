@@ -16,6 +16,8 @@ const state = {
 };
 
 const INLINE_DETAIL_BREAKPOINT = "(max-width: 1100px)";
+const MOBILE_BACK_TO_TOP_BREAKPOINT = "(max-width: 700px)";
+const BACK_TO_TOP_OFFSET = 320;
 
 const els = {
   searchInput: document.querySelector("#search-input"),
@@ -52,6 +54,7 @@ const els = {
   detailTags: document.querySelector("#detail-tags"),
   favoriteBtn: document.querySelector("#favorite-btn"),
   speakBtn: document.querySelector("#speak-btn"),
+  backToTopBtn: document.querySelector("#back-to-top-btn"),
   template: document.querySelector("#sentence-item-template"),
 };
 
@@ -67,6 +70,7 @@ async function init() {
   populateVoiceOptions();
   bindEvents();
   applyFilters();
+  updateBackToTopVisibility();
 
   els.statTotal.textContent = String(state.allSentences.length);
   els.statFavorites.textContent = String(state.favorites.size);
@@ -174,7 +178,14 @@ function bindEvents() {
     }
   });
 
+  els.backToTopBtn?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+
   window.addEventListener("resize", () => {
+    updateBackToTopVisibility();
     renderList();
     const current = findSentence(state.selectedId);
     if (current) {
@@ -504,6 +515,14 @@ function buildTagsMarkup(tags) {
 
 function isInlineDetailMode() {
   return window.matchMedia(INLINE_DETAIL_BREAKPOINT).matches;
+}
+
+function updateBackToTopVisibility() {
+  if (!els.backToTopBtn) return;
+
+  const isMobile = window.matchMedia(MOBILE_BACK_TO_TOP_BREAKPOINT).matches;
+  const shouldShow = isMobile && window.scrollY > BACK_TO_TOP_OFFSET;
+  els.backToTopBtn.classList.toggle("hidden", !shouldShow);
 }
 
 function formatCategory(item) {
