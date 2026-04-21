@@ -179,7 +179,7 @@ function applyTheme(theme) {
     const label = els.themeToggle.querySelector(".theme-toggle__label");
     const icon = els.themeToggle.querySelector(".theme-toggle__icon");
     if (label) label.textContent = isDark ? "白天" : "深夜";
-    if (icon) icon.textContent = isDark ? "☀" : "☾";
+    if (icon) icon.textContent = isDark ? "☼" : "☽";
   }
 }
 
