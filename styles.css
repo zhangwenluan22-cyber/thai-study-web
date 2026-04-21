@@ -419,6 +419,21 @@ select {
   gap: 8px;
 }
 
+.field--sort {
+  margin-top: 0;
+  min-width: 132px;
+}
+
+.field--sort span {
+  font-size: 11px;
+}
+
+.field--sort select {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 12px;
+}
+
 .field span {
   font-size: 13px;
   color: var(--muted);
@@ -1022,6 +1037,20 @@ select {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .field--sort {
+    min-width: 96px;
+  }
+
+  .field--sort span {
+    font-size: 10px;
+  }
+
+  .field--sort select {
+    min-height: 30px;
+    padding: 0 8px;
+    font-size: 10px;
   }
 
   .panel--list .panel__header-actions .ghost-button {

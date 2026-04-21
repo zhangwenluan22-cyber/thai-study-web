@@ -122,14 +122,6 @@
                   <option value="">全部</option>
                 </select>
               </label>
-
-              <label class="field">
-                <span>排序方式</span>
-                <select id="sort-filter">
-                  <option value="default">默认顺序</option>
-                  <option value="newest">新增优先</option>
-                </select>
-              </label>
             </div>
 
             <div class="toggle-row">
@@ -165,6 +157,13 @@
           <div class="panel__header">
             <h2>句子列表</h2>
             <div class="panel__header-actions">
+              <label class="field field--sort">
+                <span>排序</span>
+                <select id="sort-filter">
+                  <option value="default">默认顺序</option>
+                  <option value="newest">新增优先</option>
+                </select>
+              </label>
               <p id="results-hint" class="panel__hint">加载中...</p>
               <button id="show-all-btn" class="ghost-button" type="button" hidden>显示全部</button>
             </div>
