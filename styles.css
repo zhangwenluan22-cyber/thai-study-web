@@ -387,6 +387,19 @@ select {
   gap: 10px;
 }
 
+.panel--list .panel__header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+}
+
+.panel--list .panel__header-actions {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: end;
+  justify-content: stretch;
+}
+
 .panel__header-actions .ghost-button {
   min-height: 34px;
   padding: 0 12px;
@@ -397,6 +410,7 @@ select {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
+  min-width: 0;
 }
 
 .panel__microcopy {
@@ -1012,24 +1026,20 @@ select {
   }
 
   .panel--list .panel__header {
-    align-items: center;
-    gap: 8px;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 6px;
   }
 
   .panel--list .panel__header h2 {
-    flex: 0 0 auto;
-    min-width: auto;
     font-size: 16px;
     white-space: nowrap;
   }
 
   .panel--list .panel__header-actions {
-    margin-left: auto;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    gap: 4px;
-    min-width: 0;
-    flex: 1 1 auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 6px;
+    width: 100%;
   }
 
   .panel--list .panel__hint {
@@ -1037,6 +1047,7 @@ select {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-self: center;
   }
 
   .field--sort {
