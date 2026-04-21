@@ -619,6 +619,10 @@ select {
     padding: 18px;
   }
 
+  .panel--filters {
+    padding: 16px;
+  }
+
   .practice-panel {
     gap: 4px;
     margin-bottom: 14px;
@@ -684,7 +688,7 @@ select {
     line-height: 1.6;
   }
 
-    .panel__header {
+  .panel__header {
     margin-bottom: 14px;
     gap: 10px;
     align-items: center;
@@ -693,6 +697,46 @@ select {
   .panel__header h2 {
     flex: 1;
     min-width: 0;
+  }
+
+  .panel--filters .panel__header {
+    margin-bottom: 10px;
+  }
+
+  .panel--filters .panel__header h2 {
+    font-size: 18px;
+  }
+
+  .panel__microcopy {
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .field,
+  .checkbox,
+  .voice-box,
+  .analysis-block {
+    margin-top: 12px;
+  }
+
+  .field {
+    gap: 6px;
+  }
+
+  .field span {
+    font-size: 12px;
+  }
+
+  .field input,
+  .field select {
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 12px;
+  }
+
+  .field-grid {
+    gap: 10px;
   }
 
   .inline-detail-card__top {
@@ -716,15 +760,44 @@ select {
   }
 
   .filter-details summary {
-    padding: 12px 14px;
+    padding: 10px 12px;
     font-size: 13px;
   }
 
   .filter-details > :not(summary) {
-    padding: 0 14px 14px;
+    padding: 0 12px 12px;
   }
 
-    .practice-panel__actions {
+  .toggle-row {
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .checkbox {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .checkbox input {
+    width: 16px;
+    height: 16px;
+  }
+
+  .voice-box {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .voice-box__title {
+    font-size: 14px;
+  }
+
+  .voice-box__hint {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .practice-panel__actions {
     flex-direction: row;
     gap: 8px;
   }
