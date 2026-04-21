@@ -1,4 +1,4 @@
-const CACHE_NAME = "thai-study-cache-v9";
+const CACHE_NAME = "thai-study-cache-v10";
 const ASSETS = [
   "./index.html",
   "./styles.css",
@@ -20,12 +20,17 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) {
-        return cached;
-      }
-      return fetch(event.request);
-    }),
+    fetch(event.request)
+      .then((response) => {
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+        return response;
+      })
+      .catch(() => caches.match(event.request)),
   );
 });

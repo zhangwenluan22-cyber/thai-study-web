@@ -603,19 +603,46 @@ select {
   }
 
   .hero__text,
-  .practice-panel__copy,
-  .practice-panel__box,
   .panel {
     padding: 18px;
   }
 
+  .practice-panel {
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
   .practice-panel__copy {
-    padding-bottom: 8px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .practice-panel__box {
-    padding-top: 6px;
-    margin-top: -1px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+  }
+
+  .practice-panel h2 {
+    font-size: 17px;
+  }
+
+  .practice-panel__summary {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .practice-panel .eyebrow {
+    margin-bottom: 10px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
 
   .hero__stats {
@@ -702,7 +729,10 @@ select {
 
   .practice-panel__textarea {
     min-height: 110px;
+    padding: 12px 14px;
     border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(111, 98, 86, 0.22);
   }
 
   .sentence-list {
