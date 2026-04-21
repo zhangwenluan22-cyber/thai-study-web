@@ -21,7 +21,7 @@ window.THAI_STUDY_DATA = {
           "姓名",
           "入门"
         ],
-        "usage": "原表备注：“是”和“次”之间的发音",
+        "usage": "“是”和“次”之间的发音",
         "studyTip": "适合在“关于自己 / 姓名”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -78,7 +78,7 @@ window.THAI_STUDY_DATA = {
           "姓名",
           "入门"
         ],
-        "usage": "原表备注：lie 四声不一定要卷舌",
+        "usage": "lie 四声不一定要卷舌",
         "studyTip": "适合在“关于自己 / 姓名”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -186,7 +186,7 @@ window.THAI_STUDY_DATA = {
           "居住地",
           "入门"
         ],
-        "usage": "原表备注：+酒店Rong Ram",
+        "usage": "+酒店Rong Ram",
         "studyTip": "适合在“关于自己 / 居住地”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -243,7 +243,7 @@ window.THAI_STUDY_DATA = {
           "居住地",
           "入门"
         ],
-        "usage": "原表备注：粤语“当”相似",
+        "usage": "粤语“当”相似",
         "studyTip": "适合在“关于自己 / 居住地”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -5208,7 +5208,7 @@ window.THAI_STUDY_DATA = {
           "饮料",
           "入门"
         ],
-        "usage": "原表备注：口语里饮料也常直接说อร่อยมาก",
+        "usage": "口语里饮料也常直接说อร่อยมาก",
         "studyTip": "适合在“称赞 / 饮料”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6156,7 +6156,7 @@ window.THAI_STUDY_DATA = {
           "旅游",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 旅游”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6203,7 +6203,7 @@ window.THAI_STUDY_DATA = {
           "称呼",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 称呼”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6249,7 +6249,7 @@ window.THAI_STUDY_DATA = {
           "称呼",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 称呼”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6295,7 +6295,7 @@ window.THAI_STUDY_DATA = {
           "称呼",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 称呼”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6341,7 +6341,7 @@ window.THAI_STUDY_DATA = {
           "基础词",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 基础词”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6387,7 +6387,7 @@ window.THAI_STUDY_DATA = {
           "购物",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 购物”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6438,7 +6438,7 @@ window.THAI_STUDY_DATA = {
           "购物",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 购物”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6484,7 +6484,7 @@ window.THAI_STUDY_DATA = {
           "地点",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 地点”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6530,7 +6530,7 @@ window.THAI_STUDY_DATA = {
           "地点",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 地点”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6576,7 +6576,7 @@ window.THAI_STUDY_DATA = {
           "出发",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 出发”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6628,7 +6628,7 @@ window.THAI_STUDY_DATA = {
           "出发",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 出发”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -6680,7 +6680,7 @@ window.THAI_STUDY_DATA = {
           "旅游",
           "补充"
         ],
-        "usage": "原表备注：2026-04-20 新增",
+        "usage": "2026-04-20 新增",
         "studyTip": "适合在“补充词汇 / 旅游”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
