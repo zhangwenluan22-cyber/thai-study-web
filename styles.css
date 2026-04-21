@@ -118,6 +118,10 @@ select {
   background: rgba(250, 246, 238, 0.92);
 }
 
+:root[data-theme="dark"] .hero__stats {
+  background: rgba(31, 43, 40, 0.92);
+}
+
 .practice-panel__copy,
 .practice-panel__box {
   padding: 0;
@@ -165,9 +169,19 @@ select {
     color 220ms ease;
 }
 
+:root[data-theme="dark"] .practice-panel__textarea {
+  background: rgba(39, 52, 48, 0.94);
+  border-color: rgba(208, 221, 215, 0.1);
+}
+
 .practice-panel__textarea:focus {
   border-color: rgba(22, 96, 107, 0.55);
   box-shadow: 0 0 0 4px rgba(22, 96, 107, 0.12);
+}
+
+:root[data-theme="dark"] .practice-panel__textarea:focus {
+  border-color: rgba(145, 192, 180, 0.42);
+  box-shadow: 0 0 0 4px rgba(145, 192, 180, 0.12);
 }
 
 .practice-panel__actions {
@@ -266,6 +280,11 @@ select {
   border-radius: 22px;
   background: rgba(255, 251, 246, 0.86);
   border: 1px solid rgba(130, 105, 77, 0.09);
+}
+
+:root[data-theme="dark"] .stat-card {
+  background: rgba(42, 56, 51, 0.88);
+  border-color: rgba(208, 221, 215, 0.08);
 }
 
 .stat-card__label {
