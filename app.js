@@ -23,6 +23,10 @@ const els = {
   autoPlay: document.querySelector("#auto-play"),
   voiceSelect: document.querySelector("#voice-select"),
   testVoiceBtn: document.querySelector("#test-voice-btn"),
+  practiceInput: document.querySelector("#practice-input"),
+  practiceSpeakBtn: document.querySelector("#practice-speak-btn"),
+  practiceClearBtn: document.querySelector("#practice-clear-btn"),
+  practiceHint: document.querySelector("#practice-hint"),
   randomBtn: document.querySelector("#random-btn"),
   sentenceList: document.querySelector("#sentence-list"),
   resultsHint: document.querySelector("#results-hint"),
@@ -93,6 +97,25 @@ function bindEvents() {
 
   els.testVoiceBtn.addEventListener("click", () => {
     speak("สวัสดีค่ะ ยินดีต้อนรับสู่แบบฝึกภาษาไทย");
+  });
+
+  els.practiceSpeakBtn.addEventListener("click", () => {
+    const text = els.practiceInput.value.trim();
+    if (!text) {
+      els.practiceHint.textContent = "先输入一点泰文，再点“朗读泰文”会更有帮助。";
+      els.practiceInput.focus();
+      return;
+    }
+
+    els.practiceHint.textContent = "正在使用当前泰语声音朗读这段内容。";
+    speak(text);
+  });
+
+  els.practiceClearBtn.addEventListener("click", () => {
+    els.practiceInput.value = "";
+    els.practiceHint.textContent =
+      "小提示：这里适合自己输入或粘贴泰文内容，系统会尽量用设备里的泰语语音读出来。";
+    els.practiceInput.focus();
   });
 
   els.randomBtn.addEventListener("click", () => {

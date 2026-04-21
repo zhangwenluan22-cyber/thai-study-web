@@ -38,6 +38,37 @@
         </div>
       </header>
 
+      <section class="practice-panel">
+        <div class="practice-panel__copy">
+          <p class="eyebrow">Thai Reading Practice</p>
+          <h2>泰文朗读练习</h2>
+          <p class="practice-panel__summary">
+            把你想练的泰文单词、短句或整句贴进来，点一下就能直接朗读。适合临时查发音，也适合自己跟读练习。
+          </p>
+        </div>
+
+        <div class="practice-panel__box">
+          <label class="field">
+            <span>输入泰文</span>
+            <textarea
+              id="practice-input"
+              class="practice-panel__textarea"
+              placeholder="例如：สวัสดีค่ะ หรือ วันนี้อากาศดีมาก"
+              rows="4"
+            ></textarea>
+          </label>
+
+          <div class="practice-panel__actions">
+            <button id="practice-speak-btn" class="ghost-button" type="button">朗读泰文</button>
+            <button id="practice-clear-btn" class="favorite-button" type="button">清空</button>
+          </div>
+
+          <p id="practice-hint" class="practice-panel__hint">
+            小提示：这里适合自己输入或粘贴泰文内容，系统会尽量用设备里的泰语语音读出来。
+          </p>
+        </div>
+      </section>
+
       <main class="layout">
         <section class="panel panel--filters">
           <div class="panel__header">
