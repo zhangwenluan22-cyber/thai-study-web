@@ -21,6 +21,24 @@
   --font-display: "Avenir Next", "Noto Sans SC", sans-serif;
 }
 
+:root[data-theme="dark"] {
+  --bg: #13201d;
+  --bg-soft: rgba(20, 31, 29, 0.9);
+  --panel: rgba(28, 40, 37, 0.9);
+  --panel-ivory: rgba(30, 44, 40, 0.94);
+  --panel-sage: rgba(32, 52, 45, 0.94);
+  --panel-honey: rgba(43, 39, 31, 0.92);
+  --panel-mist: rgba(34, 43, 41, 0.94);
+  --line: rgba(220, 229, 224, 0.1);
+  --text: #eef0ea;
+  --muted: #b7beb6;
+  --accent: #91c0b4;
+  --accent-soft: rgba(145, 192, 180, 0.13);
+  --thai-green: #a7c5ae;
+  --warm: #ddbb89;
+  --shadow: 0 16px 44px rgba(6, 11, 10, 0.34);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -38,6 +56,14 @@ body {
     radial-gradient(circle at top left, rgba(240, 196, 145, 0.36), transparent 32%),
     radial-gradient(circle at right 20%, rgba(87, 140, 146, 0.18), transparent 30%),
     linear-gradient(180deg, #f4efe6 0%, #efe7db 100%);
+  transition: background 220ms ease, color 220ms ease;
+}
+
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at top left, rgba(131, 101, 68, 0.18), transparent 34%),
+    radial-gradient(circle at right 18%, rgba(71, 111, 103, 0.2), transparent 28%),
+    linear-gradient(180deg, #15211f 0%, #101917 100%);
 }
 
 button,
@@ -83,6 +109,7 @@ select {
 }
 
 .hero__text {
+  position: relative;
   padding: 28px;
   background: var(--panel-ivory);
 }
@@ -131,6 +158,11 @@ select {
   border-radius: 22px;
   outline: none;
   resize: vertical;
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease;
 }
 
 .practice-panel__textarea:focus {
@@ -162,6 +194,50 @@ select {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 12px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgba(111, 98, 86, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.78);
+  color: var(--muted);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 18px rgba(68, 51, 33, 0.05);
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.theme-toggle__icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.theme-toggle__label {
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+:root[data-theme="dark"] .theme-toggle {
+  background: rgba(36, 50, 46, 0.8);
+  border-color: rgba(206, 220, 214, 0.12);
+  color: #d9e4dc;
+  box-shadow: 0 10px 20px rgba(3, 8, 7, 0.22);
 }
 
 .hero h1 {
@@ -358,6 +434,10 @@ select {
   background: rgba(251, 248, 241, 0.88);
 }
 
+:root[data-theme="dark"] .voice-box {
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .voice-box__title {
   margin: 0 0 6px;
   font-size: 15px;
@@ -423,10 +503,22 @@ select {
     transform 160ms ease;
 }
 
+:root[data-theme="dark"] .sentence-card {
+  background: rgba(38, 47, 43, 0.96);
+  border-color: rgba(207, 220, 213, 0.08);
+  box-shadow: 0 10px 24px rgba(2, 8, 7, 0.22);
+}
+
 .sentence-card.is-active {
   border-color: rgba(95, 120, 100, 0.34);
   background: rgba(243, 248, 241, 0.98);
   box-shadow: 0 8px 20px rgba(95, 120, 100, 0.08);
+}
+
+:root[data-theme="dark"] .sentence-card.is-active {
+  border-color: rgba(167, 197, 174, 0.32);
+  background: rgba(47, 63, 56, 0.96);
+  box-shadow: 0 12px 28px rgba(5, 13, 11, 0.28);
 }
 
 .sentence-card__row {
@@ -490,6 +582,12 @@ select {
   box-shadow: 0 10px 26px rgba(54, 38, 22, 0.08);
 }
 
+:root[data-theme="dark"] .inline-detail-card,
+:root[data-theme="dark"] .breakdown-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(208, 221, 215, 0.08);
+}
+
 .inline-detail-card__top {
   display: flex;
   justify-content: space-between;
@@ -544,6 +642,11 @@ select {
   background: var(--accent-soft);
   color: var(--accent);
   font-size: 13px;
+}
+
+:root[data-theme="dark"] .pill,
+:root[data-theme="dark"] .tag-list span {
+  background: rgba(145, 192, 180, 0.16);
 }
 
 .analysis-block h4 {
@@ -639,6 +742,10 @@ select {
     padding: 18px;
   }
 
+  .hero__text {
+    padding-top: 54px;
+  }
+
   .panel--filters {
     padding: 16px;
   }
@@ -706,6 +813,22 @@ select {
     margin-top: 12px;
     font-size: 14px;
     line-height: 1.6;
+  }
+
+  .theme-toggle {
+    top: 14px;
+    right: 14px;
+    min-height: 30px;
+    padding: 0 9px;
+    gap: 5px;
+  }
+
+  .theme-toggle__icon {
+    font-size: 12px;
+  }
+
+  .theme-toggle__label {
+    font-size: 11px;
   }
 
   .panel__header {

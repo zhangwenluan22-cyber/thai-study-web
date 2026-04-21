@@ -1,6 +1,7 @@
 const STORAGE_KEYS = {
   favorites: "thai-study-favorites",
   voice: "thai-study-voice",
+  theme: "thai-study-theme",
 };
 
 const state = {
@@ -10,6 +11,7 @@ const state = {
   favorites: new Set(loadJson(STORAGE_KEYS.favorites, [])),
   selectedVoice: localStorage.getItem(STORAGE_KEYS.voice) || "",
   voices: [],
+  theme: localStorage.getItem(STORAGE_KEYS.theme) || "light",
 };
 
 const INLINE_DETAIL_BREAKPOINT = "(max-width: 1100px)";
@@ -28,6 +30,7 @@ const els = {
   practiceClearBtn: document.querySelector("#practice-clear-btn"),
   practiceHint: document.querySelector("#practice-hint"),
   randomBtn: document.querySelector("#random-btn"),
+  themeToggle: document.querySelector("#theme-toggle"),
   sentenceList: document.querySelector("#sentence-list"),
   resultsHint: document.querySelector("#results-hint"),
   statTotal: document.querySelector("#stat-total"),
@@ -57,6 +60,7 @@ async function init() {
   }
   state.allSentences = payload.sentences;
 
+  applyTheme(state.theme);
   populateFilters();
   populateVoiceOptions();
   bindEvents();
@@ -123,6 +127,11 @@ function bindEvents() {
     selectSentence(randomItem.id, true);
   });
 
+  els.themeToggle.addEventListener("click", () => {
+    const nextTheme = state.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+  });
+
   els.favoriteBtn.addEventListener("click", () => {
     if (state.selectedId === null) return;
     toggleFavorite(state.selectedId);
@@ -151,6 +160,27 @@ function bindEvents() {
   });
 
   window.speechSynthesis?.addEventListener("voiceschanged", populateVoiceOptions);
+}
+
+function applyTheme(theme) {
+  state.theme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = state.theme;
+  localStorage.setItem(STORAGE_KEYS.theme, state.theme);
+
+  const isDark = state.theme === "dark";
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) {
+    metaTheme.setAttribute("content", isDark ? "#16211f" : "#f4efe6");
+  }
+
+  if (els.themeToggle) {
+    els.themeToggle.setAttribute("aria-pressed", String(isDark));
+    els.themeToggle.setAttribute("aria-label", isDark ? "切换到白天模式" : "切换到深夜模式");
+    const label = els.themeToggle.querySelector(".theme-toggle__label");
+    const icon = els.themeToggle.querySelector(".theme-toggle__icon");
+    if (label) label.textContent = isDark ? "白天" : "深夜";
+    if (icon) icon.textContent = isDark ? "☀" : "☾";
+  }
 }
 
 function populateFilters() {
