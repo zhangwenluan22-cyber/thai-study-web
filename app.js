@@ -249,12 +249,19 @@ function renderList() {
   });
 
   els.sentenceList.append(fragment);
-  els.resultsHint.textContent = `共 ${state.filteredSentences.length} 条，轻点句子即可查看解析`;
+  els.resultsHint.textContent = `共 ${state.filteredSentences.length} 条，点句子展开，再点一次收起`;
   els.statVisible.textContent = String(state.filteredSentences.length);
   els.statFavorites.textContent = String(state.favorites.size);
 }
 
 function selectSentence(id, allowSpeech = false) {
+  if (state.selectedId === id) {
+    state.selectedId = null;
+    renderList();
+    renderEmptyDetail();
+    return;
+  }
+
   state.selectedId = id;
   renderList();
   const item = findSentence(id);
