@@ -510,6 +510,37 @@ select {
   max-height: calc(100vh - 260px);
   overflow: auto;
   padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(143, 126, 108, 0.38) rgba(255, 255, 255, 0.08);
+}
+
+.sentence-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.sentence-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.sentence-list::-webkit-scrollbar-thumb {
+  background: rgba(143, 126, 108, 0.38);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+:root[data-theme="dark"] .sentence-list {
+  scrollbar-color: rgba(146, 171, 159, 0.28) rgba(255, 255, 255, 0.03);
+}
+
+:root[data-theme="dark"] .sentence-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+:root[data-theme="dark"] .sentence-list::-webkit-scrollbar-thumb {
+  background: rgba(146, 171, 159, 0.28);
+  border-color: rgba(18, 28, 26, 0.18);
 }
 
 .sentence-entry {
