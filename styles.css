@@ -7,6 +7,7 @@
   --muted: #6f6256;
   --accent: #16606b;
   --accent-soft: rgba(22, 96, 107, 0.1);
+  --thai-green: #5f7864;
   --warm: #c47b42;
   --shadow: 0 14px 40px rgba(54, 38, 22, 0.08);
   --radius-lg: 28px;
@@ -422,6 +423,7 @@ select {
   margin-top: 10px;
   font-size: 22px;
   line-height: 1.35;
+  color: var(--thai-green);
 }
 
 .sentence-card__chinese,
