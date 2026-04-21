@@ -1022,9 +1022,6 @@ select {
   .inline-detail-card__actions .ghost-button,
   .inline-detail-card__actions .favorite-button {
     flex: 1 1 0;
-  }
-
-  .inline-detail-card__actions .ghost-button {
     min-height: 36px;
     padding: 0 12px;
     font-size: 13px;

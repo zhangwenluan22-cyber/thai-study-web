@@ -1,4 +1,4 @@
-const CACHE_NAME = "thai-study-cache-v22";
+const CACHE_NAME = "thai-study-cache-v24";
 const ASSETS = [
   "./index.html",
   "./styles.css",
