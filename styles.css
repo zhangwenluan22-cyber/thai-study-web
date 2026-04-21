@@ -822,7 +822,20 @@ select {
   }
 
   .hero__text {
-    padding-top: 54px;
+    padding: 14px 16px 16px;
+    padding-top: 46px;
+    border-radius: 22px;
+  }
+
+  .hero h1 {
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.11em;
   }
 
   .panel--filters {
@@ -889,9 +902,9 @@ select {
   }
 
   .hero__summary {
-    margin-top: 12px;
-    font-size: 14px;
-    line-height: 1.6;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .theme-toggle {
