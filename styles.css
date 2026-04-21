@@ -1,7 +1,11 @@
 :root {
-  --bg: #f6f1e8;
-  --bg-soft: rgba(255, 252, 246, 0.84);
-  --panel: rgba(255, 250, 242, 0.92);
+  --bg: #f5efe3;
+  --bg-soft: rgba(250, 246, 238, 0.9);
+  --panel: rgba(255, 251, 245, 0.94);
+  --panel-ivory: rgba(255, 252, 247, 0.96);
+  --panel-sage: rgba(236, 241, 232, 0.92);
+  --panel-honey: rgba(244, 235, 220, 0.9);
+  --panel-mist: rgba(246, 244, 239, 0.94);
   --line: rgba(82, 61, 42, 0.12);
   --text: #2c241d;
   --muted: #6f6256;
@@ -61,7 +65,7 @@ select {
   gap: 28px;
   margin-bottom: 20px;
   padding: 28px 32px;
-  background: var(--panel);
+  background: var(--panel-ivory);
   backdrop-filter: blur(16px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -80,6 +84,11 @@ select {
 
 .hero__text {
   padding: 28px;
+  background: var(--panel-ivory);
+}
+
+.hero__stats {
+  background: rgba(250, 246, 238, 0.92);
 }
 
 .practice-panel__copy,
@@ -179,7 +188,7 @@ select {
 .stat-card {
   padding: 20px 16px;
   border-radius: 22px;
-  background: var(--bg-soft);
+  background: rgba(255, 251, 246, 0.86);
   border: 1px solid rgba(130, 105, 77, 0.09);
 }
 
@@ -207,7 +216,15 @@ select {
 }
 
 .panel--list {
-  background: rgba(243, 235, 221, 0.88);
+  background: var(--panel-honey);
+}
+
+.panel--filters {
+  background: var(--panel-sage);
+}
+
+.panel--detail {
+  background: var(--panel-mist);
 }
 
 .panel__header {
@@ -284,7 +301,7 @@ select {
   margin-top: 14px;
   border: 1px solid rgba(111, 98, 86, 0.14);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 252, 247, 0.56);
   overflow: hidden;
 }
 
@@ -338,7 +355,7 @@ select {
 .voice-box {
   padding: 16px;
   border-radius: 20px;
-  background: var(--bg-soft);
+  background: rgba(251, 248, 241, 0.88);
 }
 
 .voice-box__title {
@@ -468,7 +485,7 @@ select {
 .inline-detail-card {
   padding: 18px;
   border-radius: 20px;
-  background: rgba(255, 250, 242, 0.95);
+  background: rgba(253, 250, 245, 0.96);
   border: 1px solid rgba(22, 96, 107, 0.14);
   box-shadow: 0 10px 26px rgba(54, 38, 22, 0.08);
 }
