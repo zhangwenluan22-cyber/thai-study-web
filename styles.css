@@ -253,6 +253,11 @@ select {
   padding-right: 4px;
 }
 
+.sentence-entry {
+  display: grid;
+  gap: 10px;
+}
+
 .sentence-card {
   width: 100%;
   padding: 16px;
@@ -319,6 +324,28 @@ select {
 
 .detail-card.hidden {
   display: none;
+}
+
+.inline-detail-card {
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 250, 242, 0.95);
+  border: 1px solid rgba(22, 96, 107, 0.14);
+  box-shadow: 0 10px 26px rgba(54, 38, 22, 0.08);
+}
+
+.inline-detail-card__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inline-detail-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
 .detail-card__top {
@@ -415,6 +442,10 @@ select {
     grid-template-columns: 1fr;
   }
 
+  .panel--detail {
+    display: none;
+  }
+
   .sentence-list {
     max-height: none;
   }
@@ -469,6 +500,24 @@ select {
   .sentence-card {
     padding: 13px;
     border-radius: 16px;
+  }
+
+  .inline-detail-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .inline-detail-card__top {
+    flex-direction: column;
+  }
+
+  .inline-detail-card__actions {
+    justify-content: stretch;
+  }
+
+  .inline-detail-card__actions .ghost-button,
+  .inline-detail-card__actions .favorite-button {
+    flex: 1 1 0;
   }
 
   .sentence-card__thai {

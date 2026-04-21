@@ -12,6 +12,8 @@ const state = {
   voices: [],
 };
 
+const INLINE_DETAIL_BREAKPOINT = "(max-width: 1100px)";
+
 const els = {
   searchInput: document.querySelector("#search-input"),
   primaryFilter: document.querySelector("#primary-filter"),
@@ -117,6 +119,16 @@ function bindEvents() {
     }
   });
 
+  window.addEventListener("resize", () => {
+    renderList();
+    const current = findSentence(state.selectedId);
+    if (current) {
+      renderDetail(current);
+    } else {
+      renderEmptyDetail();
+    }
+  });
+
   window.speechSynthesis?.addEventListener("voiceschanged", populateVoiceOptions);
 }
 
@@ -208,8 +220,12 @@ function applyFilters() {
 function renderList() {
   els.sentenceList.innerHTML = "";
   const fragment = document.createDocumentFragment();
+  const inlineDetailMode = isInlineDetailMode();
 
   state.filteredSentences.forEach((item) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "sentence-entry";
+
     const node = els.template.content.firstElementChild.cloneNode(true);
     node.dataset.id = String(item.id);
     node.classList.toggle("is-active", item.id === state.selectedId);
@@ -222,7 +238,14 @@ function renderList() {
       ? "★"
       : "☆";
     node.addEventListener("click", () => selectSentence(item.id, true));
-    fragment.append(node);
+
+    wrapper.append(node);
+
+    if (inlineDetailMode && item.id === state.selectedId) {
+      wrapper.append(buildInlineDetail(item));
+    }
+
+    fragment.append(wrapper);
   });
 
   els.sentenceList.append(fragment);
@@ -243,6 +266,12 @@ function selectSentence(id, allowSpeech = false) {
 }
 
 function renderDetail(item) {
+  if (isInlineDetailMode()) {
+    els.detailEmpty.classList.add("hidden");
+    els.detailCard.classList.add("hidden");
+    return;
+  }
+
   els.detailEmpty.classList.add("hidden");
   els.detailCard.classList.remove("hidden");
   els.detailCategory.textContent = formatCategory(item);
@@ -284,10 +313,121 @@ function renderDetail(item) {
 }
 
 function renderEmptyDetail() {
+  if (isInlineDetailMode()) {
+    els.detailEmpty.classList.add("hidden");
+    els.detailCard.classList.add("hidden");
+    els.resultsHint.textContent = "没有匹配结果，可以换个关键词试试";
+    els.statVisible.textContent = "0";
+    return;
+  }
+
   els.detailEmpty.classList.remove("hidden");
   els.detailCard.classList.add("hidden");
   els.resultsHint.textContent = "没有匹配结果，可以换个关键词试试";
   els.statVisible.textContent = "0";
+}
+
+function buildInlineDetail(item) {
+  const detail = document.createElement("article");
+  detail.className = "inline-detail-card";
+  detail.innerHTML = `
+    <div class="inline-detail-card__top">
+      <div>
+        <p class="detail-card__category">${escapeHtml(formatCategory(item))}</p>
+        <h3>${escapeHtml(item.chinese || "暂缺中文")}</h3>
+      </div>
+      <div class="inline-detail-card__actions">
+        <button class="ghost-button inline-speak-btn" type="button">朗读</button>
+        <button class="favorite-button inline-favorite-btn" type="button">${
+          state.favorites.has(item.id) ? "取消收藏" : "收藏"
+        }</button>
+      </div>
+    </div>
+
+    <div class="detail-card__thai">${escapeHtml(item.thai || "暂缺泰语")}</div>
+    <div class="detail-card__roman">${escapeHtml(item.romanization || "暂缺罗马音")}</div>
+
+    <div class="detail-card__meta">
+      <span class="pill">${escapeHtml(item.difficulty || "未标注")}</span>
+      <span class="pill">${escapeHtml(item.analysis.sentenceType)}</span>
+    </div>
+
+    <section class="analysis-block">
+      <h4>怎么用</h4>
+      <p>${escapeHtml(item.analysis.usage)}</p>
+    </section>
+
+    <section class="analysis-block">
+      <h4>学习建议</h4>
+      <p>${escapeHtml(item.analysis.studyTip)}</p>
+    </section>
+
+    <section class="analysis-block">
+      <h4>拆词感知</h4>
+      <div class="breakdown-list">${buildBreakdownMarkup(item.analysis.wordBreakdown || [])}</div>
+    </section>
+
+    <section class="analysis-block">
+      <h4>延伸知识</h4>
+      <div class="extension-list">${buildExtensionsMarkup(item.analysis.extensions || [])}</div>
+    </section>
+
+    <section class="analysis-block">
+      <h4>标签</h4>
+      <div class="tag-list">${buildTagsMarkup(item.analysis.tags || [])}</div>
+    </section>
+
+    <section class="analysis-block">
+      <h4>备注</h4>
+      <p>${escapeHtml(item.note || "当前没有额外备注。")}</p>
+    </section>
+  `;
+
+  detail.querySelector(".inline-speak-btn").addEventListener("click", (event) => {
+    event.stopPropagation();
+    speak(item.thai);
+  });
+
+  detail.querySelector(".inline-favorite-btn").addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleFavorite(item.id);
+    renderList();
+  });
+
+  return detail;
+}
+
+function buildBreakdownMarkup(parts) {
+  return parts
+    .map(
+      (part) => `
+        <div class="breakdown-item">
+          <strong>${escapeHtml(part.label)}: ${escapeHtml(part.value)}</strong>
+          <p class="breakdown-item__hint">${escapeHtml(part.hint)}</p>
+        </div>
+      `,
+    )
+    .join("");
+}
+
+function buildExtensionsMarkup(lines) {
+  return lines
+    .map(
+      (line) => `
+        <div class="extension-item">
+          <p>${escapeHtml(line)}</p>
+        </div>
+      `,
+    )
+    .join("");
+}
+
+function buildTagsMarkup(tags) {
+  return tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+}
+
+function isInlineDetailMode() {
+  return window.matchMedia(INLINE_DETAIL_BREAKPOINT).matches;
 }
 
 function formatCategory(item) {
