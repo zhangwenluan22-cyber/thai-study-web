@@ -384,12 +384,12 @@ select {
 
 .sentence-entry {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .sentence-card {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   border: 1px solid rgba(130, 105, 77, 0.14);
   border-radius: 20px;
   background: rgba(255, 253, 249, 0.96);
@@ -430,7 +430,7 @@ select {
 
 .sentence-card__thai {
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 22px;
   line-height: 1.35;
   color: var(--thai-green);
@@ -439,7 +439,7 @@ select {
 .sentence-card__chinese,
 .sentence-card__roman,
 .analysis-block p {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: var(--muted);
   line-height: 1.65;
 }
@@ -753,11 +753,11 @@ select {
   }
 
   .sentence-list {
-    gap: 10px;
+    gap: 8px;
   }
 
   .sentence-card {
-    padding: 13px;
+    padding: 12px;
     border-radius: 16px;
   }
 
@@ -769,7 +769,7 @@ select {
   
 
   .sentence-card__thai {
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: 18px;
   }
 
