@@ -643,9 +643,20 @@ select {
     padding: 0 14px 14px;
   }
 
-  .practice-panel__actions {
-    flex-direction: column;
+    .practice-panel__actions {
+    flex-direction: row;
+    gap: 8px;
   }
+
+  .practice-panel__actions .ghost-button,
+  .practice-panel__actions .favorite-button {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
 
   .practice-panel__textarea {
     min-height: 110px;
