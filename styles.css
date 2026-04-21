@@ -378,6 +378,12 @@ select {
   outline: none;
 }
 
+:root[data-theme="dark"] .field input,
+:root[data-theme="dark"] .field select {
+  background: rgba(32, 44, 41, 0.94);
+  border-color: rgba(208, 221, 215, 0.08);
+}
+
 .field input:focus,
 .field select:focus,
 .ghost-button:focus,
@@ -398,6 +404,11 @@ select {
   border-radius: 18px;
   background: rgba(255, 252, 247, 0.56);
   overflow: hidden;
+}
+
+:root[data-theme="dark"] .filter-details {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(208, 221, 215, 0.08);
 }
 
 .filter-details summary {
@@ -897,6 +908,12 @@ select {
     border-radius: 12px;
   }
 
+  :root[data-theme="dark"] .field input,
+  :root[data-theme="dark"] .field select {
+    background: rgba(28, 39, 36, 0.95);
+    border-color: rgba(208, 221, 215, 0.08);
+  }
+
   .field-grid {
     gap: 10px;
   }
@@ -928,6 +945,11 @@ select {
 
   .filter-details > :not(summary) {
     padding: 0 12px 12px;
+  }
+
+  :root[data-theme="dark"] .filter-details {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(208, 221, 215, 0.08);
   }
 
   .toggle-row {
