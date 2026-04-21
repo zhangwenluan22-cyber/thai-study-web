@@ -122,9 +122,24 @@ function bindEvents() {
 
   els.randomBtn.addEventListener("click", () => {
     if (!state.filteredSentences.length) return;
-    const randomItem =
-      state.filteredSentences[Math.floor(Math.random() * state.filteredSentences.length)];
+    const candidates =
+      state.filteredSentences.length > 1
+        ? state.filteredSentences.filter((item) => item.id !== state.selectedId)
+        : state.filteredSentences;
+    const randomItem = candidates[Math.floor(Math.random() * candidates.length)];
+    if (!randomItem) return;
+
+    if (randomItem.id === state.selectedId) {
+      if (els.autoPlay.checked) {
+        speak(randomItem.thai);
+      }
+      return;
+    }
+
     selectSentence(randomItem.id, true);
+    document
+      .querySelector(`.sentence-card[data-id="${randomItem.id}"]`)
+      ?.scrollIntoView({ block: "nearest", behavior: "smooth" });
   });
 
   els.themeToggle.addEventListener("click", () => {
