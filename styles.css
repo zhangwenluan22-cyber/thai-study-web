@@ -647,23 +647,23 @@ select {
 
   .hero__stats {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    padding: 10px;
+    gap: 6px;
+    padding: 8px;
   }
 
   .stat-card {
-    padding: 10px 8px;
-    border-radius: 16px;
+    padding: 8px 6px;
+    border-radius: 14px;
     text-align: center;
   }
 
   .stat-card__label {
-    margin-bottom: 6px;
-    font-size: 11px;
+    margin-bottom: 4px;
+    font-size: 10px;
   }
 
   .stat-card strong {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .hero__summary {
@@ -727,10 +727,15 @@ select {
   }
 
 
+  .practice-panel__box {
+    max-width: 336px;
+  }
+
   .practice-panel__textarea {
-    min-height: 110px;
-    padding: 12px 14px;
-    border-radius: 16px;
+    width: 100%;
+    min-height: 84px;
+    padding: 10px 12px;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.9);
     border-color: rgba(111, 98, 86, 0.22);
   }
