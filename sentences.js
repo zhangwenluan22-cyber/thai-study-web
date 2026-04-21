@@ -2,7 +2,7 @@ window.THAI_STUDY_DATA = {
   "meta": {
     "title": "泰语学习句子库",
     "sourceFile": "泰语学习app_入门口语句子库_v1_0421.xlsx",
-    "recordCount": 141
+    "recordCount": 142
   },
   "sentences": [
     {
@@ -178,7 +178,7 @@ window.THAI_STUDY_DATA = {
       "thai": "หนูอยู่ที่___ค่ะ",
       "romanization": "noo yu thi ___ kha",
       "difficulty": "入门",
-      "note": "+酒店Rong Ramโรงแรม",
+      "note": "+酒店Rong Ram",
       "analysis": {
         "sentenceType": "陈述句",
         "tags": [
@@ -186,7 +186,7 @@ window.THAI_STUDY_DATA = {
           "居住地",
           "入门"
         ],
-        "usage": "+酒店Rong Ramโรงแรม",
+        "usage": "+酒店Rong Ram",
         "studyTip": "适合在“关于自己 / 居住地”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -216,7 +216,7 @@ window.THAI_STUDY_DATA = {
           },
           {
             "label": "备注提醒",
-            "value": "+酒店Rong Ramโรงแรม",
+            "value": "+酒店Rong Ram",
             "hint": "这一条来自你原始词库里的备注信息。"
           }
         ],
@@ -6847,6 +6847,57 @@ window.THAI_STUDY_DATA = {
         "extensions": [
           "延伸练习：把这句放进“补充词汇 / 时间”场景里，连续说三遍，练顺嘴感。",
           "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。"
+        ]
+      }
+    },
+    {
+      "id": 160,
+      "primaryCategory": "补充词汇",
+      "secondaryCategory": "时间",
+      "chinese": "有时间吗？",
+      "thai": "มีเวลาไหมคะ",
+      "romanization": "mii we-laa mai kha",
+      "difficulty": "补充",
+      "note": "2026-04-22 新增",
+      "analysis": {
+        "sentenceType": "问句",
+        "tags": [
+          "补充词汇",
+          "时间",
+          "补充"
+        ],
+        "usage": "2026-04-22 新增",
+        "studyTip": "适合在“补充词汇 / 时间”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "มีเวลาไหมคะ",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "mii / we-laa / mai / kha",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "问句提示",
+            "value": "ไหม",
+            "hint": "常用来把一句话变成“吗？”这样的疑问句。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "有时间吗",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "2026-04-22 新增",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“补充词汇 / 时间”场景里，连续说三遍，练顺嘴感。",
+          "对话练习：把这句当作提问句，再自己补一句可能的回答。"
         ]
       }
     }
