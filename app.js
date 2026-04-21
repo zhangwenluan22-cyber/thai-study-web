@@ -42,12 +42,6 @@ const els = {
   statFavorites: document.querySelector("#stat-favorites"),
   detailEmpty: document.querySelector("#detail-empty"),
   detailCard: document.querySelector("#detail-card"),
-  detailCategory: document.querySelector("#detail-category"),
-  detailChinese: document.querySelector("#detail-chinese"),
-  detailThai: document.querySelector("#detail-thai"),
-  detailRoman: document.querySelector("#detail-roman"),
-  detailDifficulty: document.querySelector("#detail-difficulty"),
-  detailType: document.querySelector("#detail-type"),
   detailUsage: document.querySelector("#detail-usage"),
   detailBreakdown: document.querySelector("#detail-breakdown"),
   detailTags: document.querySelector("#detail-tags"),
@@ -381,12 +375,6 @@ function renderDetail(item) {
 
   els.detailEmpty.classList.add("hidden");
   els.detailCard.classList.remove("hidden");
-  els.detailCategory.textContent = formatCategory(item);
-  els.detailChinese.textContent = item.chinese || "暂缺中文";
-  els.detailThai.textContent = item.thai || "暂缺泰语";
-  els.detailRoman.textContent = item.romanization || "暂缺罗马音";
-  els.detailDifficulty.textContent = item.difficulty || "未标注";
-  els.detailType.textContent = item.analysis.sentenceType;
   els.detailUsage.textContent = item.note || "当前没有额外备注。";
   els.favoriteBtn.textContent = state.favorites.has(item.id) ? "取消收藏" : "收藏";
 
@@ -440,24 +428,12 @@ function buildInlineDetail(item) {
   detail.className = "inline-detail-card";
   detail.innerHTML = `
     <div class="inline-detail-card__top">
-      <div>
-        <p class="detail-card__category">${escapeHtml(formatCategory(item))}</p>
-        <h3>${escapeHtml(item.chinese || "暂缺中文")}</h3>
-      </div>
       <div class="inline-detail-card__actions">
         <button class="ghost-button inline-speak-btn" type="button">朗读</button>
         <button class="favorite-button inline-favorite-btn" type="button">${
           state.favorites.has(item.id) ? "取消收藏" : "收藏"
         }</button>
       </div>
-    </div>
-
-    <div class="detail-card__thai">${escapeHtml(item.thai || "暂缺泰语")}</div>
-    <div class="detail-card__roman">${escapeHtml(item.romanization || "暂缺罗马音")}</div>
-
-    <div class="detail-card__meta">
-      <span class="pill">${escapeHtml(item.difficulty || "未标注")}</span>
-      <span class="pill">${escapeHtml(item.analysis.sentenceType)}</span>
     </div>
 
     <section class="analysis-block">
