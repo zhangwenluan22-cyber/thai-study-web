@@ -24,6 +24,7 @@ const els = {
   primaryFilter: document.querySelector("#primary-filter"),
   secondaryFilter: document.querySelector("#secondary-filter"),
   difficultyFilter: document.querySelector("#difficulty-filter"),
+  sortFilter: document.querySelector("#sort-filter"),
   favoritesOnly: document.querySelector("#favorites-only"),
   autoPlay: document.querySelector("#auto-play"),
   voiceSelect: document.querySelector("#voice-select"),
@@ -79,6 +80,7 @@ function bindEvents() {
     els.primaryFilter,
     els.secondaryFilter,
     els.difficultyFilter,
+    els.sortFilter,
     els.favoritesOnly,
   ].forEach((element) => element.addEventListener("input", applyFilters));
 
@@ -256,6 +258,7 @@ function applyFilters() {
   const primary = els.primaryFilter.value;
   const secondary = els.secondaryFilter.value;
   const difficulty = els.difficultyFilter.value;
+  const sortMode = els.sortFilter.value;
   const favoritesOnly = els.favoritesOnly.checked;
 
   state.filteredSentences = state.allSentences.filter((item) => {
@@ -277,6 +280,10 @@ function applyFilters() {
     if (favoritesOnly && !state.favorites.has(item.id)) return false;
     return true;
   });
+
+  if (sortMode === "newest") {
+    state.filteredSentences.sort((left, right) => compareByNewest(right, left));
+  }
 
   state.focusedListId = null;
 
@@ -484,6 +491,22 @@ function getVisibleBreakdownParts(item) {
   return (item.analysis.wordBreakdown || []).filter(
     (part) => !["整句泰语", "礼貌尾词", "中文核心意思", "备注提醒"].includes(part.label),
   );
+}
+
+function compareByNewest(left, right) {
+  const leftStamp = getAddedDateStamp(left.note);
+  const rightStamp = getAddedDateStamp(right.note);
+  if (leftStamp !== rightStamp) {
+    return leftStamp - rightStamp;
+  }
+  return Number(left.id || 0) - Number(right.id || 0);
+}
+
+function getAddedDateStamp(note) {
+  const match = String(note || "").match(/(\d{4})-(\d{2})-(\d{2})\s*新增/);
+  if (!match) return 0;
+  const [, year, month, day] = match;
+  return Number(`${year}${month}${day}`);
 }
 
 function buildTagsMarkup(tags) {
