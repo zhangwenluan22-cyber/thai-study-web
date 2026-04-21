@@ -432,7 +432,60 @@ select {
   }
 
   .hero__stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .stat-card {
+    padding: 10px 8px;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .stat-card__label {
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+
+  .stat-card strong {
+    font-size: 22px;
+  }
+
+  .hero__summary {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .panel__header {
+    margin-bottom: 14px;
+  }
+
+  .sentence-list {
+    gap: 10px;
+  }
+
+  .sentence-card {
+    padding: 13px;
+    border-radius: 16px;
+  }
+
+  .sentence-card__thai {
+    margin-top: 8px;
+    font-size: 18px;
+  }
+
+  .sentence-card__chinese,
+  .sentence-card__roman,
+  .analysis-block p {
+    margin-top: 6px;
+    line-height: 1.55;
+  }
+
+  .sentence-card__category,
+  .detail-card__category {
+    font-size: 11px;
   }
 
   .detail-card__thai {
