@@ -58,14 +58,18 @@ select {
 .practice-panel {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr;
-  gap: 0;
+  gap: 28px;
   margin-bottom: 20px;
+  padding: 28px 32px;
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 
 .hero__text,
 .hero__stats,
-.practice-panel__copy,
-.practice-panel__box,
 .panel {
   background: var(--panel);
   backdrop-filter: blur(16px);
@@ -80,20 +84,19 @@ select {
 
 .practice-panel__copy,
 .practice-panel__box {
-  padding: 24px 26px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .practice-panel__copy {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  padding-right: 18px;
+  padding-right: 8px;
 }
 
 .practice-panel__box {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  padding-left: 18px;
+  padding-left: 8px;
 }
 
 .practice-panel h2 {
@@ -111,12 +114,12 @@ select {
 
 .practice-panel__textarea {
   width: 100%;
-  min-height: 122px;
-  padding: 14px 16px;
+  min-height: 132px;
+  padding: 16px 18px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.76);
-  border: 1px solid rgba(111, 98, 86, 0.18);
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(111, 98, 86, 0.14);
+  border-radius: 22px;
   outline: none;
   resize: vertical;
 }
@@ -128,8 +131,8 @@ select {
 
 .practice-panel__actions {
   display: flex;
-  gap: 10px;
-  margin-top: 14px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .practice-panel__actions .ghost-button,
@@ -138,7 +141,7 @@ select {
 }
 
 .practice-panel__hint {
-  margin: 14px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
   line-height: 1.6;
   font-size: 13px;
