@@ -1192,7 +1192,26 @@ select {
     border-radius: 16px;
   }
 
-  
+  .breakdown-list {
+    gap: 8px;
+  }
+
+  .breakdown-item {
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  .breakdown-item strong {
+    margin-bottom: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .breakdown-item__hint {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
 
   .sentence-card__thai {
     margin-top: 6px;

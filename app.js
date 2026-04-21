@@ -49,7 +49,6 @@ const els = {
   detailDifficulty: document.querySelector("#detail-difficulty"),
   detailType: document.querySelector("#detail-type"),
   detailUsage: document.querySelector("#detail-usage"),
-  detailTip: document.querySelector("#detail-tip"),
   detailBreakdown: document.querySelector("#detail-breakdown"),
   detailTags: document.querySelector("#detail-tags"),
   favoriteBtn: document.querySelector("#favorite-btn"),
@@ -397,11 +396,10 @@ function renderDetail(item) {
   els.detailDifficulty.textContent = item.difficulty || "未标注";
   els.detailType.textContent = item.analysis.sentenceType;
   els.detailUsage.textContent = item.note || "当前没有额外备注。";
-  els.detailTip.textContent = item.analysis.studyTip;
   els.favoriteBtn.textContent = state.favorites.has(item.id) ? "取消收藏" : "收藏";
 
   els.detailBreakdown.innerHTML = "";
-  (item.analysis.wordBreakdown || []).forEach((part) => {
+  getVisibleBreakdownParts(item).forEach((part) => {
     const box = document.createElement("div");
     box.className = "breakdown-item";
     box.innerHTML = `
@@ -476,13 +474,8 @@ function buildInlineDetail(item) {
     </section>
 
     <section class="analysis-block">
-      <h4>学习建议</h4>
-      <p>${escapeHtml(item.analysis.studyTip)}</p>
-    </section>
-
-    <section class="analysis-block">
       <h4>拆词感知</h4>
-      <div class="breakdown-list">${buildBreakdownMarkup(item.analysis.wordBreakdown || [])}</div>
+      <div class="breakdown-list">${buildBreakdownMarkup(getVisibleBreakdownParts(item))}</div>
     </section>
 
     <section class="analysis-block">
@@ -517,6 +510,12 @@ function buildBreakdownMarkup(parts) {
       `,
     )
     .join("");
+}
+
+function getVisibleBreakdownParts(item) {
+  return (item.analysis.wordBreakdown || []).filter(
+    (part) => !["中文核心意思", "备注提醒"].includes(part.label),
+  );
 }
 
 function buildTagsMarkup(tags) {
