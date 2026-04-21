@@ -507,14 +507,12 @@ select {
   gap: 8px;
 }
 
-.breakdown-list,
-.extension-list {
+.breakdown-list {
   display: grid;
   gap: 10px;
 }
 
-.breakdown-item,
-.extension-item {
+.breakdown-item {
   padding: 12px 14px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.7);
@@ -527,8 +525,7 @@ select {
   font-size: 14px;
 }
 
-.breakdown-item p,
-.extension-item p {
+.breakdown-item p {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;

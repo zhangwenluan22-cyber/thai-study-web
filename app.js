@@ -44,7 +44,6 @@ const els = {
   detailUsage: document.querySelector("#detail-usage"),
   detailTip: document.querySelector("#detail-tip"),
   detailBreakdown: document.querySelector("#detail-breakdown"),
-  detailExtensions: document.querySelector("#detail-extensions"),
   detailTags: document.querySelector("#detail-tags"),
   detailNote: document.querySelector("#detail-note"),
   favoriteBtn: document.querySelector("#favorite-btn"),
@@ -326,14 +325,6 @@ function renderDetail(item) {
     els.detailBreakdown.append(box);
   });
 
-  els.detailExtensions.innerHTML = "";
-  (item.analysis.extensions || []).forEach((line) => {
-    const box = document.createElement("div");
-    box.className = "extension-item";
-    box.innerHTML = `<p>${escapeHtml(line)}</p>`;
-    els.detailExtensions.append(box);
-  });
-
   els.detailTags.innerHTML = "";
   item.analysis.tags.forEach((tag) => {
     const span = document.createElement("span");
@@ -398,11 +389,6 @@ function buildInlineDetail(item) {
     </section>
 
     <section class="analysis-block">
-      <h4>延伸知识</h4>
-      <div class="extension-list">${buildExtensionsMarkup(item.analysis.extensions || [])}</div>
-    </section>
-
-    <section class="analysis-block">
       <h4>标签</h4>
       <div class="tag-list">${buildTagsMarkup(item.analysis.tags || [])}</div>
     </section>
@@ -434,18 +420,6 @@ function buildBreakdownMarkup(parts) {
         <div class="breakdown-item">
           <strong>${escapeHtml(part.label)}: ${escapeHtml(part.value)}</strong>
           <p class="breakdown-item__hint">${escapeHtml(part.hint)}</p>
-        </div>
-      `,
-    )
-    .join("");
-}
-
-function buildExtensionsMarkup(lines) {
-  return lines
-    .map(
-      (line) => `
-        <div class="extension-item">
-          <p>${escapeHtml(line)}</p>
         </div>
       `,
     )
