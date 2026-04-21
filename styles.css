@@ -931,6 +931,23 @@ select {
     font-size: 11px;
   }
 
+  .panel--list .panel__header {
+    align-items: center;
+  }
+
+  .panel--list .panel__header-actions {
+    margin-left: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .panel--list .panel__hint {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
   .panel--filters .panel__header {
     margin-bottom: 10px;
   }

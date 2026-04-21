@@ -300,6 +300,7 @@ function renderList() {
   const fragment = document.createDocumentFragment();
   const inlineDetailMode = isInlineDetailMode();
   const visibleSentences = getVisibleSentences();
+  const compactHeader = window.matchMedia("(max-width: 700px)").matches;
 
   visibleSentences.forEach((item) => {
     const wrapper = document.createElement("div");
@@ -331,8 +332,12 @@ function renderList() {
   els.showAllBtn.hidden = state.focusedListId === null;
   els.resultsHint.textContent =
     state.focusedListId === null
-      ? `共 ${state.filteredSentences.length} 条，点句子展开，再点一次收起`
-      : `随机聚焦 1 条，可点“显示全部”返回 ${state.filteredSentences.length} 条`;
+      ? compactHeader
+        ? `共 ${state.filteredSentences.length} 条`
+        : `共 ${state.filteredSentences.length} 条，点句子展开，再点一次收起`
+      : compactHeader
+        ? `聚焦 1 / ${state.filteredSentences.length}`
+        : `随机聚焦 1 条，可点“显示全部”返回 ${state.filteredSentences.length} 条`;
   els.statVisible.textContent = String(visibleSentences.length);
   els.statFavorites.textContent = String(state.favorites.size);
 }
