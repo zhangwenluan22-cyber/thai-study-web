@@ -356,14 +356,6 @@ function selectSentence(id, allowSpeech = false) {
   const shouldAutoSpeak = allowSpeech && els.autoPlay.checked;
 
   if (state.selectedId === id) {
-    const current = findSentence(id);
-    if (shouldAutoSpeak && current) {
-      speak(current.thai);
-      renderList();
-      renderDetail(current);
-      return;
-    }
-
     state.selectedId = null;
     renderList();
     renderEmptyDetail();
