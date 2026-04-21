@@ -180,7 +180,7 @@ select {
 
 .layout {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr) 360px;
+  grid-template-columns: 280px minmax(0, 1fr) 360px;
   gap: 20px;
   align-items: start;
 }
@@ -206,6 +206,13 @@ select {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
+}
+
+.panel__microcopy {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .field,
@@ -250,6 +257,43 @@ select {
 .field-grid {
   display: grid;
   gap: 12px;
+}
+
+.filter-details {
+  margin-top: 14px;
+  border: 1px solid rgba(111, 98, 86, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.48);
+  overflow: hidden;
+}
+
+.filter-details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.filter-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.filter-details summary::after {
+  content: "展开";
+  float: right;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.filter-details[open] summary::after {
+  content: "收起";
+}
+
+.filter-details > :not(summary) {
+  padding: 0 16px 16px;
 }
 
 .toggle-row {
@@ -559,6 +603,15 @@ select {
 
   .panel__header {
     margin-bottom: 14px;
+  }
+
+  .filter-details summary {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .filter-details > :not(summary) {
+    padding: 0 14px 14px;
   }
 
   .practice-panel__actions {

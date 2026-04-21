@@ -86,55 +86,61 @@
             />
           </label>
 
-          <div class="field-grid">
-            <label class="field">
-              <span>一级场景</span>
-              <select id="primary-filter">
-                <option value="">全部</option>
-              </select>
-            </label>
+          <p class="panel__microcopy">先用搜索最快，更多筛选和发音设置可以按需展开。</p>
 
-            <label class="field">
-              <span>二级场景</span>
-              <select id="secondary-filter">
-                <option value="">全部</option>
-              </select>
-            </label>
+          <details class="filter-details">
+            <summary>更多筛选与发音设置</summary>
 
-            <label class="field">
-              <span>难度</span>
-              <select id="difficulty-filter">
-                <option value="">全部</option>
-              </select>
-            </label>
-          </div>
+            <div class="field-grid">
+              <label class="field">
+                <span>一级场景</span>
+                <select id="primary-filter">
+                  <option value="">全部</option>
+                </select>
+              </label>
 
-          <div class="toggle-row">
-            <label class="checkbox">
-              <input id="favorites-only" type="checkbox" />
-              <span>只看收藏</span>
-            </label>
-            <label class="checkbox">
-              <input id="auto-play" type="checkbox" checked />
-              <span>点开时自动朗读</span>
-            </label>
-          </div>
+              <label class="field">
+                <span>二级场景</span>
+                <select id="secondary-filter">
+                  <option value="">全部</option>
+                </select>
+              </label>
 
-          <div class="voice-box">
-            <div>
-              <p class="voice-box__title">发音方式</p>
-              <p class="voice-box__hint">
-                默认使用设备里的泰语语音。不同手机和电脑声音会略有差异，安装 Thai 语音包后效果通常更自然。
-              </p>
+              <label class="field">
+                <span>难度</span>
+                <select id="difficulty-filter">
+                  <option value="">全部</option>
+                </select>
+              </label>
             </div>
-            <label class="field">
-              <span>泰语声音</span>
-              <select id="voice-select">
-                <option value="">自动选择系统最佳泰语声音</option>
-              </select>
-            </label>
-            <button id="test-voice-btn" class="ghost-button" type="button">试听发音</button>
-          </div>
+
+            <div class="toggle-row">
+              <label class="checkbox">
+                <input id="favorites-only" type="checkbox" />
+                <span>只看收藏</span>
+              </label>
+              <label class="checkbox">
+                <input id="auto-play" type="checkbox" checked />
+                <span>点开时自动朗读</span>
+              </label>
+            </div>
+
+            <div class="voice-box">
+              <div>
+                <p class="voice-box__title">发音方式</p>
+                <p class="voice-box__hint">
+                  默认使用设备里的泰语语音。不同手机和电脑声音会略有差异，安装 Thai 语音包后效果通常更自然。
+                </p>
+              </div>
+              <label class="field">
+                <span>泰语声音</span>
+                <select id="voice-select">
+                  <option value="">自动选择系统最佳泰语声音</option>
+                </select>
+              </label>
+              <button id="test-voice-btn" class="ghost-button" type="button">试听发音</button>
+            </div>
+          </details>
         </section>
 
         <section class="panel panel--list">
