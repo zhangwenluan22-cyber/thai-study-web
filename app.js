@@ -8,6 +8,7 @@ const state = {
   allSentences: [],
   filteredSentences: [],
   selectedId: null,
+  focusedListId: null,
   favorites: new Set(loadJson(STORAGE_KEYS.favorites, [])),
   selectedVoice: localStorage.getItem(STORAGE_KEYS.voice) || "",
   voices: [],
@@ -30,6 +31,7 @@ const els = {
   practiceClearBtn: document.querySelector("#practice-clear-btn"),
   practiceHint: document.querySelector("#practice-hint"),
   randomBtn: document.querySelector("#random-btn"),
+  showAllBtn: document.querySelector("#show-all-btn"),
   themeToggle: document.querySelector("#theme-toggle"),
   sentenceList: document.querySelector("#sentence-list"),
   resultsHint: document.querySelector("#results-hint"),
@@ -130,16 +132,24 @@ function bindEvents() {
     if (!randomItem) return;
 
     if (randomItem.id === state.selectedId) {
+      state.focusedListId = randomItem.id;
+      renderList();
       if (els.autoPlay.checked) {
         speak(randomItem.thai);
       }
       return;
     }
 
+    state.focusedListId = randomItem.id;
     selectSentence(randomItem.id, true);
     document
       .querySelector(`.sentence-card[data-id="${randomItem.id}"]`)
       ?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+
+  els.showAllBtn.addEventListener("click", () => {
+    state.focusedListId = null;
+    renderList();
   });
 
   els.themeToggle.addEventListener("click", () => {
@@ -264,6 +274,8 @@ function applyFilters() {
     return true;
   });
 
+  state.focusedListId = null;
+
   if (!state.filteredSentences.length) {
     state.selectedId = null;
     renderList();
@@ -287,8 +299,9 @@ function renderList() {
   els.sentenceList.innerHTML = "";
   const fragment = document.createDocumentFragment();
   const inlineDetailMode = isInlineDetailMode();
+  const visibleSentences = getVisibleSentences();
 
-  state.filteredSentences.forEach((item) => {
+  visibleSentences.forEach((item) => {
     const wrapper = document.createElement("div");
     wrapper.className = "sentence-entry";
 
@@ -315,8 +328,12 @@ function renderList() {
   });
 
   els.sentenceList.append(fragment);
-  els.resultsHint.textContent = `共 ${state.filteredSentences.length} 条，点句子展开，再点一次收起`;
-  els.statVisible.textContent = String(state.filteredSentences.length);
+  els.showAllBtn.hidden = state.focusedListId === null;
+  els.resultsHint.textContent =
+    state.focusedListId === null
+      ? `共 ${state.filteredSentences.length} 条，点句子展开，再点一次收起`
+      : `随机聚焦 1 条，可点“显示全部”返回 ${state.filteredSentences.length} 条`;
+  els.statVisible.textContent = String(visibleSentences.length);
   els.statFavorites.textContent = String(state.favorites.size);
 }
 
@@ -380,6 +397,7 @@ function renderEmptyDetail() {
   if (isInlineDetailMode()) {
     els.detailEmpty.classList.add("hidden");
     els.detailCard.classList.add("hidden");
+    els.showAllBtn.hidden = true;
     els.resultsHint.textContent = "没有匹配结果，可以换个关键词试试";
     els.statVisible.textContent = "0";
     return;
@@ -387,8 +405,18 @@ function renderEmptyDetail() {
 
   els.detailEmpty.classList.remove("hidden");
   els.detailCard.classList.add("hidden");
+  els.showAllBtn.hidden = true;
   els.resultsHint.textContent = "没有匹配结果，可以换个关键词试试";
   els.statVisible.textContent = "0";
+}
+
+function getVisibleSentences() {
+  if (state.focusedListId === null) {
+    return state.filteredSentences;
+  }
+
+  const focused = state.filteredSentences.find((item) => item.id === state.focusedListId);
+  return focused ? [focused] : state.filteredSentences;
 }
 
 function buildInlineDetail(item) {

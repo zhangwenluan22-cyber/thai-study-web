@@ -335,6 +335,20 @@ select {
   font-size: 20px;
 }
 
+.panel__header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.panel__header-actions .ghost-button {
+  min-height: 34px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
 .panel__hint {
   margin: 0;
   color: var(--muted);
@@ -905,6 +919,16 @@ select {
   .panel__header h2 {
     flex: 1;
     min-width: 0;
+  }
+
+  .panel__header-actions {
+    gap: 8px;
+  }
+
+  .panel__header-actions .ghost-button {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 11px;
   }
 
   .panel--filters .panel__header {

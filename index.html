@@ -156,7 +156,10 @@
         <section class="panel panel--list">
           <div class="panel__header">
             <h2>句子列表</h2>
-            <p id="results-hint" class="panel__hint">加载中...</p>
+            <div class="panel__header-actions">
+              <p id="results-hint" class="panel__hint">加载中...</p>
+              <button id="show-all-btn" class="ghost-button" type="button" hidden>显示全部</button>
+            </div>
           </div>
           <div id="sentence-list" class="sentence-list" aria-live="polite"></div>
         </section>
