@@ -295,7 +295,11 @@ function applyFilters() {
   }
 
   const currentVisible = state.filteredSentences.some((item) => item.id === state.selectedId);
-  if (!currentVisible) {
+  if (isInlineDetailMode()) {
+    if (!currentVisible) {
+      state.selectedId = null;
+    }
+  } else if (!currentVisible) {
     state.selectedId = state.filteredSentences[0].id;
   }
 
