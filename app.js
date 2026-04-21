@@ -45,7 +45,6 @@ const els = {
   detailTip: document.querySelector("#detail-tip"),
   detailBreakdown: document.querySelector("#detail-breakdown"),
   detailTags: document.querySelector("#detail-tags"),
-  detailNote: document.querySelector("#detail-note"),
   favoriteBtn: document.querySelector("#favorite-btn"),
   speakBtn: document.querySelector("#speak-btn"),
   template: document.querySelector("#sentence-item-template"),
@@ -309,9 +308,8 @@ function renderDetail(item) {
   els.detailRoman.textContent = item.romanization || "暂缺罗马音";
   els.detailDifficulty.textContent = item.difficulty || "未标注";
   els.detailType.textContent = item.analysis.sentenceType;
-  els.detailUsage.textContent = item.analysis.usage;
+  els.detailUsage.textContent = item.note || "当前没有额外备注。";
   els.detailTip.textContent = item.analysis.studyTip;
-  els.detailNote.textContent = item.note || "当前没有额外备注。";
   els.favoriteBtn.textContent = state.favorites.has(item.id) ? "取消收藏" : "收藏";
 
   els.detailBreakdown.innerHTML = "";
@@ -374,8 +372,8 @@ function buildInlineDetail(item) {
     </div>
 
     <section class="analysis-block">
-      <h4>怎么用</h4>
-      <p>${escapeHtml(item.analysis.usage)}</p>
+      <h4>备注</h4>
+      <p>${escapeHtml(item.note || "当前没有额外备注。")}</p>
     </section>
 
     <section class="analysis-block">
@@ -393,10 +391,6 @@ function buildInlineDetail(item) {
       <div class="tag-list">${buildTagsMarkup(item.analysis.tags || [])}</div>
     </section>
 
-    <section class="analysis-block">
-      <h4>备注</h4>
-      <p>${escapeHtml(item.note || "当前没有额外备注。")}</p>
-    </section>
   `;
 
   detail.querySelector(".inline-speak-btn").addEventListener("click", (event) => {
