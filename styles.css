@@ -386,17 +386,23 @@ select {
 .sentence-card {
   width: 100%;
   padding: 16px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(130, 105, 77, 0.14);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 253, 249, 0.96);
+  box-shadow: 0 6px 16px rgba(90, 67, 44, 0.05);
   text-align: left;
   cursor: pointer;
-  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .sentence-card.is-active {
-  border-color: rgba(22, 96, 107, 0.4);
-  background: rgba(22, 96, 107, 0.09);
+  border-color: rgba(95, 120, 100, 0.34);
+  background: rgba(243, 248, 241, 0.98);
+  box-shadow: 0 8px 20px rgba(95, 120, 100, 0.08);
 }
 
 .sentence-card__row {
