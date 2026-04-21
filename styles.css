@@ -335,6 +335,9 @@ select {
 
 .ghost-button,
 .favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 42px;
   padding: 0 14px;
   border: 1px solid rgba(22, 96, 107, 0.18);
@@ -342,8 +345,10 @@ select {
   background: var(--accent-soft);
   color: var(--accent);
   cursor: pointer;
+  white-space: nowrap;
   transition: transform 160ms ease, background 160ms ease;
 }
+
 
 .ghost-button:hover,
 .favorite-button:hover,
@@ -598,8 +603,35 @@ select {
     line-height: 1.6;
   }
 
-  .panel__header {
+    .panel__header {
     margin-bottom: 14px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .panel__header h2 {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .inline-detail-card__top {
+    flex-direction: column;
+  }
+
+  .inline-detail-card__actions {
+    justify-content: stretch;
+  }
+
+  .inline-detail-card__actions .ghost-button,
+  .inline-detail-card__actions .favorite-button {
+    flex: 1 1 0;
+  }
+
+  .inline-detail-card__actions .ghost-button {
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 
   .filter-details summary {
@@ -634,18 +666,7 @@ select {
     border-radius: 16px;
   }
 
-  .inline-detail-card__top {
-    flex-direction: column;
-  }
-
-  .inline-detail-card__actions {
-    justify-content: stretch;
-  }
-
-  .inline-detail-card__actions .ghost-button,
-  .inline-detail-card__actions .favorite-button {
-    flex: 1 1 0;
-  }
+  
 
   .sentence-card__thai {
     margin-top: 8px;
