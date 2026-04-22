@@ -815,6 +815,7 @@ select {
 .breakdown-list {
   display: grid;
   gap: 10px;
+  min-width: 0;
 }
 
 .breakdown-item {
@@ -822,18 +823,26 @@ select {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(111, 98, 86, 0.12);
+  min-width: 0;
 }
 
 .breakdown-item strong {
   display: block;
   margin-bottom: 6px;
   font-size: 14px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .breakdown-item p {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .breakdown-item__hint {
