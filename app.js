@@ -379,7 +379,7 @@ function selectSentence(id, allowSpeech = false) {
   const item = findSentence(id);
   if (!item) return;
   if (shouldAutoSpeak) {
-    speak(item.thai);
+    speak(item.thai, { preserveGesture: true });
   }
   renderList();
   renderDetail(item);
@@ -542,8 +542,9 @@ function toggleFavorite(id) {
   localStorage.setItem(STORAGE_KEYS.favorites, JSON.stringify([...state.favorites]));
 }
 
-function speak(text) {
+function speak(text, options = {}) {
   if (!text || !window.speechSynthesis) return;
+  const { preserveGesture = false } = options;
 
   if (!state.voices.length) {
     populateVoiceOptions();
@@ -562,11 +563,18 @@ function speak(text) {
 
   window.speechSynthesis.cancel();
 
-  // Some mobile browsers need a short delay after cancel() or the next utterance is dropped.
-  window.setTimeout(() => {
+  const runSpeech = () => {
     window.speechSynthesis.speak(utterance);
     window.speechSynthesis.resume?.();
-  }, 40);
+  };
+
+  if (preserveGesture) {
+    runSpeech();
+    return;
+  }
+
+  // Some mobile browsers need a short delay after cancel() or the next utterance is dropped.
+  window.setTimeout(runSpeech, 40);
 }
 
 function chooseBestVoice() {
