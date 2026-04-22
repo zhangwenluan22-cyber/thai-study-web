@@ -503,7 +503,7 @@ function compareByNewest(left, right) {
   if (leftStamp !== rightStamp) {
     return leftStamp - rightStamp;
   }
-  return Number(left.id || 0) - Number(right.id || 0);
+  return Number(right.id || 0) - Number(left.id || 0);
 }
 
 function getAddedDateStamp(note) {
