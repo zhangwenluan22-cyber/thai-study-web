@@ -2,7 +2,7 @@ window.THAI_STUDY_DATA = {
   "meta": {
     "title": "泰语学习句子库",
     "sourceFile": "泰语学习app_入门口语句子库_v1_0421.xlsx",
-    "recordCount": 142
+    "recordCount": 146
   },
   "sentences": [
     {
@@ -6897,6 +6897,207 @@ window.THAI_STUDY_DATA = {
         ],
         "extensions": [
           "延伸练习：把这句放进“补充词汇 / 时间”场景里，连续说三遍，练顺嘴感。",
+          "对话练习：把这句当作提问句，再自己补一句可能的回答。"
+        ]
+      }
+    },
+    {
+      "id": 161,
+      "primaryCategory": "补充词汇",
+      "secondaryCategory": "称呼",
+      "chinese": "你",
+      "thai": "คุณ / เธอ",
+      "romanization": "khun / thoe",
+      "difficulty": "补充",
+      "note": "khun 常用于礼貌或对年长者，thoe 常用于熟人朋友之间",
+      "analysis": {
+        "sentenceType": "陈述句",
+        "tags": [
+          "补充词汇",
+          "称呼",
+          "补充"
+        ],
+        "usage": "khun 常用于礼貌或对年长者，thoe 常用于熟人朋友之间",
+        "studyTip": "适合在“补充词汇 / 称呼”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "คุณ / เธอ",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "khun / / / thoe",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "你",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "khun 常用于礼貌或对年长者，thoe 常用于熟人朋友之间",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“补充词汇 / 称呼”场景里，连续说三遍，练顺嘴感。",
+          "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。"
+        ]
+      }
+    },
+    {
+      "id": 162,
+      "primaryCategory": "称赞",
+      "secondaryCategory": "外表",
+      "chinese": "你真的很漂亮。",
+      "thai": "คุณสวยมากจริงๆ",
+      "romanization": "khun suai mak jing jing",
+      "difficulty": "补充",
+      "note": "jing jing = really / 真的",
+      "analysis": {
+        "sentenceType": "陈述句",
+        "tags": [
+          "称赞",
+          "外表",
+          "补充"
+        ],
+        "usage": "jing jing = really / 真的",
+        "studyTip": "适合在“称赞 / 外表”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "คุณสวยมากจริงๆ",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "khun / suai / mak / jing",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "你真的很漂亮",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "jing jing = really / 真的",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“称赞 / 外表”场景里，连续说三遍，练顺嘴感。",
+          "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。",
+          "方向联想：留意句里有没有“去 / 来”的方向感，这类词在旅游场景很常见。"
+        ]
+      }
+    },
+    {
+      "id": 163,
+      "primaryCategory": "关于自己",
+      "secondaryCategory": "语言",
+      "chinese": "其实我不会讲泰语。",
+      "thai": "จริงๆ แล้ว หนูพูดภาษาไทยไม่ได้",
+      "romanization": "jing jing laeo noo phut phasa thai mai dai",
+      "difficulty": "补充",
+      "note": "แล้ว (laeo) 这里有“其实 / 转折带入”的语感",
+      "analysis": {
+        "sentenceType": "陈述句",
+        "tags": [
+          "关于自己",
+          "语言",
+          "补充"
+        ],
+        "usage": "แล้ว (laeo) 这里有“其实 / 转折带入”的语感",
+        "studyTip": "适合在“关于自己 / 语言”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "จริงๆ แล้ว หนูพูดภาษาไทยไม่ได้",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "jing / jing / laeo / noo",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "否定提示",
+            "value": "ไม่",
+            "hint": "这是很高频的否定词，看到它时先想到“不 / 没有”。"
+          },
+          {
+            "label": "自称",
+            "value": "หนู",
+            "hint": "这里常作女生较自然的自称，口气比较柔和。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "其实我不会讲泰语",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "แล้ว (laeo) 这里有“其实 / 转折带入”的语感",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“关于自己 / 语言”场景里，连续说三遍，练顺嘴感。",
+          "变体练习：可以尝试把语速放慢，再用自然语速各读一遍。",
+          "语感提醒：否定句建议先重读 ไม่，再把后面内容连起来。"
+        ]
+      }
+    },
+    {
+      "id": 164,
+      "primaryCategory": "提问相关",
+      "secondaryCategory": "语言",
+      "chinese": "你会讲泰语吗？",
+      "thai": "เธอพูดไทยได้ไหม",
+      "romanization": "thoe phut thai dai mai",
+      "difficulty": "补充",
+      "note": "ได้ไหม (dai mai) 常用来表达“会……吗 / 能……吗”",
+      "analysis": {
+        "sentenceType": "问句",
+        "tags": [
+          "提问相关",
+          "语言",
+          "补充"
+        ],
+        "usage": "ได้ไหม (dai mai) 常用来表达“会……吗 / 能……吗”",
+        "studyTip": "适合在“提问相关 / 语言”这个场景先整句记忆，再跟读两到三遍。",
+        "wordBreakdown": [
+          {
+            "label": "整句泰语",
+            "value": "เธอพูดไทยได้ไหม",
+            "hint": "先把整句跟读熟，再看下面的记忆点。"
+          },
+          {
+            "label": "发音拆分",
+            "value": "thoe / phut / thai / dai",
+            "hint": "按这个节奏分小段模仿，会比一口气硬背更轻松。"
+          },
+          {
+            "label": "问句提示",
+            "value": "ไหม",
+            "hint": "常用来把一句话变成“吗？”这样的疑问句。"
+          },
+          {
+            "label": "中文核心意思",
+            "value": "你会讲泰语吗",
+            "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "ได้ไหม (dai mai) 常用来表达“会……吗 / 能……吗”",
+            "hint": "这一条来自你原始词库里的备注信息。"
+          }
+        ],
+        "extensions": [
+          "延伸练习：把这句放进“提问相关 / 语言”场景里，连续说三遍，练顺嘴感。",
           "对话练习：把这句当作提问句，再自己补一句可能的回答。"
         ]
       }
