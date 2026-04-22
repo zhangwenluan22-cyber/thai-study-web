@@ -282,7 +282,7 @@ function applyFilters() {
   });
 
   if (sortMode === "newest") {
-    state.filteredSentences.sort((left, right) => compareByNewest(right, left));
+    state.filteredSentences.sort(compareByNewest);
   }
 
   state.focusedListId = null;
@@ -501,7 +501,7 @@ function compareByNewest(left, right) {
   const leftStamp = getAddedDateStamp(left.note);
   const rightStamp = getAddedDateStamp(right.note);
   if (leftStamp !== rightStamp) {
-    return leftStamp - rightStamp;
+    return rightStamp - leftStamp;
   }
   return Number(right.id || 0) - Number(left.id || 0);
 }
