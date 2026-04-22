@@ -498,19 +498,7 @@ function getVisibleBreakdownParts(item) {
 }
 
 function compareByNewest(left, right) {
-  const leftStamp = getAddedDateStamp(left.note);
-  const rightStamp = getAddedDateStamp(right.note);
-  if (leftStamp !== rightStamp) {
-    return rightStamp - leftStamp;
-  }
   return Number(right.id || 0) - Number(left.id || 0);
-}
-
-function getAddedDateStamp(note) {
-  const match = String(note || "").match(/(\d{4})-(\d{2})-(\d{2})\s*新增/);
-  if (!match) return 0;
-  const [, year, month, day] = match;
-  return Number(`${year}${month}${day}`);
 }
 
 function buildTagsMarkup(tags) {
