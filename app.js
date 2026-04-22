@@ -228,6 +228,7 @@ function populateVoiceOptions() {
 
   const previous = state.selectedVoice;
   els.voiceSelect.innerHTML = '<option value="">自动选择系统最佳泰语声音</option>';
+  let hasPreviousVoice = false;
 
   state.voices.forEach((voice) => {
     const option = document.createElement("option");
@@ -235,9 +236,16 @@ function populateVoiceOptions() {
     option.textContent = `${voice.name} (${voice.lang})`;
     if (voice.name === previous) {
       option.selected = true;
+      hasPreviousVoice = true;
     }
     els.voiceSelect.append(option);
   });
+
+  if (previous && !hasPreviousVoice) {
+    state.selectedVoice = "";
+    localStorage.removeItem(STORAGE_KEYS.voice);
+    els.voiceSelect.value = "";
+  }
 }
 
 function fillSelect(select, values) {
@@ -537,16 +545,28 @@ function toggleFavorite(id) {
 function speak(text) {
   if (!text || !window.speechSynthesis) return;
 
-  window.speechSynthesis.cancel();
+  if (!state.voices.length) {
+    populateVoiceOptions();
+  }
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "th-TH";
   utterance.rate = 0.9;
   utterance.pitch = 1;
 
   const exactVoice = state.voices.find((voice) => voice.name === state.selectedVoice);
-  utterance.voice = exactVoice || chooseBestVoice();
+  const fallbackVoice = exactVoice || chooseBestVoice();
+  if (fallbackVoice) {
+    utterance.voice = fallbackVoice;
+  }
 
-  window.speechSynthesis.speak(utterance);
+  window.speechSynthesis.cancel();
+
+  // Some mobile browsers need a short delay after cancel() or the next utterance is dropped.
+  window.setTimeout(() => {
+    window.speechSynthesis.speak(utterance);
+    window.speechSynthesis.resume?.();
+  }, 40);
 }
 
 function chooseBestVoice() {
