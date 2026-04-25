@@ -1242,15 +1242,19 @@ select {
   }
 
   .field--sort select {
+    height: 30px;
     min-height: 30px;
     padding: 0 8px;
     font-size: 10px;
+    border-radius: 12px;
+    box-sizing: border-box;
   }
 
   .panel--list .panel__header-actions .ghost-button {
     min-height: 30px;
     padding: 0 8px;
     font-size: 10px;
+    border-radius: 12px;
     align-self: center;
   }
 
