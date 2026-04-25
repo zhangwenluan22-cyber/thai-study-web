@@ -432,9 +432,9 @@ select {
 
 .notes-manager {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   margin-top: 14px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   border-radius: 18px;
   background: rgba(255, 252, 247, 0.58);
   border: 1px solid rgba(111, 98, 86, 0.12);
@@ -446,7 +446,7 @@ select {
 }
 
 .notes-manager__title {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--accent);
   font-weight: 600;
 }
@@ -454,14 +454,21 @@ select {
 .notes-manager__hint {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.55;
 }
 
 .notes-manager__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
+}
+
+.notes-manager__actions .ghost-button {
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 11px;
 }
 
 .field,
@@ -1154,26 +1161,26 @@ select {
 
   .notes-manager {
     margin-top: 12px;
-    padding: 12px;
-    gap: 8px;
-  }
-
-  .notes-manager__title {
-    font-size: 13px;
-  }
-
-  .notes-manager__hint {
-    font-size: 11px;
-  }
-
-  .notes-manager__actions {
+    padding: 10px 12px;
     gap: 6px;
   }
 
-  .notes-manager__actions .ghost-button {
-    min-height: 30px;
-    padding: 0 10px;
+  .notes-manager__title {
+    font-size: 11px;
+  }
+
+  .notes-manager__hint {
     font-size: 10px;
+  }
+
+  .notes-manager__actions {
+    gap: 5px;
+  }
+
+  .notes-manager__actions .ghost-button {
+    min-height: 26px;
+    padding: 0 9px;
+    font-size: 9px;
   }
 
   .panel--list .panel__header {
