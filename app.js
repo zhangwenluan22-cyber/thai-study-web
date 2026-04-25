@@ -1,5 +1,6 @@
 const STORAGE_KEYS = {
   favorites: "thai-study-favorites",
+  myNotes: "thai-study-my-notes",
   voice: "thai-study-voice",
   theme: "thai-study-theme",
 };
@@ -10,10 +11,13 @@ const state = {
   selectedId: null,
   focusedListId: null,
   favorites: new Set(loadJson(STORAGE_KEYS.favorites, [])),
+  myNotes: loadNotes(),
   selectedVoice: localStorage.getItem(STORAGE_KEYS.voice) || "",
   voices: [],
   theme: localStorage.getItem(STORAGE_KEYS.theme) || "light",
 };
+
+let pendingImportStatusElement = null;
 
 const INLINE_DETAIL_BREAKPOINT = "(max-width: 1100px)";
 const MOBILE_BACK_TO_TOP_BREAKPOINT = "(max-width: 700px)";
@@ -45,11 +49,13 @@ const els = {
   detailEmpty: document.querySelector("#detail-empty"),
   detailCard: document.querySelector("#detail-card"),
   detailUsage: document.querySelector("#detail-usage"),
+  detailMyNote: document.querySelector("#detail-my-note"),
   detailBreakdown: document.querySelector("#detail-breakdown"),
   detailTags: document.querySelector("#detail-tags"),
   favoriteBtn: document.querySelector("#favorite-btn"),
   speakBtn: document.querySelector("#speak-btn"),
   backToTopBtn: document.querySelector("#back-to-top-btn"),
+  notesImportInput: document.querySelector("#notes-import-input"),
   template: document.querySelector("#sentence-item-template"),
 };
 
@@ -198,6 +204,7 @@ function bindEvents() {
   });
 
   window.speechSynthesis?.addEventListener("voiceschanged", populateVoiceOptions);
+  els.notesImportInput?.addEventListener("change", handleNotesImport);
 }
 
 function applyTheme(theme) {
@@ -404,6 +411,8 @@ function renderDetail(item) {
   els.detailCard.classList.remove("hidden");
   els.detailUsage.textContent = item.note || "当前没有额外备注。";
   els.favoriteBtn.textContent = state.favorites.has(item.id) ? "取消收藏" : "收藏";
+  els.detailMyNote.innerHTML = buildMyNoteMarkup(item);
+  attachMyNoteControls(els.detailMyNote, item);
 
   els.detailBreakdown.innerHTML = "";
   getVisibleBreakdownParts(item).forEach((part) => {
@@ -469,6 +478,11 @@ function buildInlineDetail(item) {
     </section>
 
     <section class="analysis-block">
+      <h4>我的备注</h4>
+      ${buildMyNoteMarkup(item)}
+    </section>
+
+    <section class="analysis-block">
       <h4>拆词感知</h4>
       <div class="breakdown-list">${buildBreakdownMarkup(getVisibleBreakdownParts(item))}</div>
     </section>
@@ -491,7 +505,72 @@ function buildInlineDetail(item) {
     renderList();
   });
 
+  attachMyNoteControls(detail, item);
+
   return detail;
+}
+
+function buildMyNoteMarkup(item) {
+  const note = escapeHtml(getMyNote(item.id));
+  return `
+    <div class="my-note-box" data-note-id="${item.id}">
+      <p class="my-note-box__hint">
+        只保存在当前浏览器，不会修改原始句库。可用导出/导入在不同设备间备份或恢复。
+      </p>
+      <textarea
+        class="my-note-box__textarea"
+        rows="4"
+        placeholder="写下你自己的理解、提醒或临时想法"
+      >${note}</textarea>
+      <div class="my-note-box__actions">
+        <span class="my-note-box__status">修改后需手动点保存，数据只保存在当前浏览器</span>
+        <div class="my-note-box__buttons">
+          <button class="ghost-button my-note-save-btn" type="button">保存我的备注</button>
+          <button class="ghost-button my-note-export-btn" type="button">导出我的备注</button>
+          <button class="ghost-button my-note-import-btn" type="button">导入我的备注</button>
+          <button class="favorite-button my-note-clear-btn" type="button">清空</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function attachMyNoteControls(root, item) {
+  const box = root.querySelector(`[data-note-id="${item.id}"]`);
+  if (!box) return;
+
+  const textarea = box.querySelector(".my-note-box__textarea");
+  const status = box.querySelector(".my-note-box__status");
+  const saveBtn = box.querySelector(".my-note-save-btn");
+  const clearBtn = box.querySelector(".my-note-clear-btn");
+  const exportBtn = box.querySelector(".my-note-export-btn");
+  const importBtn = box.querySelector(".my-note-import-btn");
+
+  textarea?.addEventListener("input", () => {
+    setNoteStatus(status, "已修改，记得点保存");
+  });
+
+  saveBtn?.addEventListener("click", () => {
+    saveMyNote(item.id, textarea.value);
+    setNoteStatus(status, "已保存到当前浏览器");
+  });
+
+  clearBtn?.addEventListener("click", () => {
+    textarea.value = "";
+    saveMyNote(item.id, "");
+    setNoteStatus(status, "已清空当前句子的我的备注");
+  });
+
+  exportBtn?.addEventListener("click", () => {
+    exportMyNotes();
+    setNoteStatus(status, "已导出我的备注文件");
+  });
+
+  importBtn?.addEventListener("click", () => {
+    pendingImportStatusElement = status;
+    els.notesImportInput.value = "";
+    els.notesImportInput.click();
+  });
 }
 
 function buildBreakdownMarkup(parts) {
@@ -559,6 +638,73 @@ function toggleFavorite(id) {
   localStorage.setItem(STORAGE_KEYS.favorites, JSON.stringify([...state.favorites]));
 }
 
+function getMyNote(id) {
+  return state.myNotes[String(id)] || "";
+}
+
+function saveMyNote(id, value) {
+  const key = String(id);
+  const trimmed = value.trim();
+  if (trimmed) {
+    state.myNotes[key] = value;
+  } else {
+    delete state.myNotes[key];
+  }
+  localStorage.setItem(STORAGE_KEYS.myNotes, JSON.stringify(state.myNotes));
+}
+
+function exportMyNotes() {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    notes: state.myNotes,
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `thai-study-my-notes-${new Date().toISOString().slice(0, 10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+async function handleNotesImport(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  try {
+    const text = await file.text();
+    const parsed = JSON.parse(text);
+    const imported = normalizeNotes(parsed?.notes ?? parsed);
+    state.myNotes = { ...state.myNotes, ...imported };
+    localStorage.setItem(STORAGE_KEYS.myNotes, JSON.stringify(state.myNotes));
+    const importedCount = Object.keys(imported).length;
+    setNoteStatus(pendingImportStatusElement, `已导入 ${importedCount} 条我的备注`);
+    syncVisibleMyNoteFields();
+  } catch {
+    setNoteStatus(pendingImportStatusElement, "导入失败：请选择之前导出的备注文件");
+  } finally {
+    pendingImportStatusElement = null;
+    event.target.value = "";
+  }
+}
+
+function setNoteStatus(element, message) {
+  if (element) {
+    element.textContent = message;
+  }
+}
+
+function syncVisibleMyNoteFields() {
+  if (state.selectedId === null) return;
+  const value = getMyNote(state.selectedId);
+  document.querySelectorAll(`.my-note-box[data-note-id="${state.selectedId}"]`).forEach((box) => {
+    const textarea = box.querySelector(".my-note-box__textarea");
+    if (textarea) {
+      textarea.value = value;
+    }
+  });
+}
+
 function speak(text, options = {}) {
   if (!text || !window.speechSynthesis) return;
   const { preserveGesture = false } = options;
@@ -609,6 +755,22 @@ function loadJson(key, fallback) {
   } catch {
     return fallback;
   }
+}
+
+function loadNotes() {
+  return normalizeNotes(loadJson(STORAGE_KEYS.myNotes, {}));
+}
+
+function normalizeNotes(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return {};
+  }
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key, note]) => key && typeof note === "string" && note.trim())
+      .map(([key, note]) => [key, note]),
+  );
 }
 
 function escapeHtml(value) {

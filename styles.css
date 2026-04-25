@@ -860,6 +860,63 @@ select {
   font-size: 13px;
 }
 
+.my-note-box {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(111, 98, 86, 0.12);
+}
+
+.my-note-box__hint,
+.my-note-box__status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.my-note-box__textarea {
+  width: 100%;
+  min-height: 108px;
+  padding: 12px 14px;
+  resize: vertical;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(111, 98, 86, 0.16);
+  border-radius: 14px;
+  outline: none;
+  font: inherit;
+  line-height: 1.6;
+}
+
+.my-note-box__textarea:focus {
+  border-color: rgba(22, 96, 107, 0.55);
+  box-shadow: 0 0 0 4px rgba(22, 96, 107, 0.12);
+}
+
+.my-note-box__actions {
+  display: grid;
+  gap: 10px;
+}
+
+.my-note-box__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+:root[data-theme="dark"] .my-note-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(208, 221, 215, 0.08);
+}
+
+:root[data-theme="dark"] .my-note-box__textarea {
+  background: rgba(28, 39, 36, 0.96);
+  border-color: rgba(208, 221, 215, 0.08);
+}
+
 @media (max-width: 1100px) {
   .hero {
     grid-template-columns: 1fr;
@@ -1295,6 +1352,20 @@ select {
     margin-top: 4px;
     font-size: 12px;
     line-height: 1.45;
+  }
+
+  .my-note-box {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .my-note-box__textarea {
+    min-height: 96px;
+    padding: 10px 12px;
+  }
+
+  .my-note-box__buttons {
+    gap: 6px;
   }
 
   .sentence-card__thai {
