@@ -446,7 +446,7 @@ select {
 }
 
 .notes-manager__title {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--accent);
   font-weight: 600;
 }
@@ -468,7 +468,7 @@ select {
   min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .field,
@@ -1171,7 +1171,7 @@ select {
   }
 
   .notes-manager__title {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .notes-manager__hint {
@@ -1185,7 +1185,7 @@ select {
   .notes-manager__actions .ghost-button {
     min-height: 26px;
     padding: 0 9px;
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .panel--list .panel__header {
