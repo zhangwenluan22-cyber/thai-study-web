@@ -867,6 +867,7 @@ select {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(111, 98, 86, 0.12);
+  justify-items: center;
 }
 
 .my-note-box__hint,
@@ -878,8 +879,8 @@ select {
 }
 
 .my-note-box__textarea {
-  width: 100%;
-  min-height: 108px;
+  width: min(100%, 620px);
+  min-height: 88px;
   padding: 12px 14px;
   resize: vertical;
   color: var(--text);
@@ -899,12 +900,23 @@ select {
 .my-note-box__actions {
   display: grid;
   gap: 10px;
+  width: 100%;
+  justify-items: center;
 }
 
 .my-note-box__buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  justify-content: center;
+}
+
+.my-note-box__buttons .ghost-button,
+.my-note-box__buttons .favorite-button {
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 13px;
 }
 
 :root[data-theme="dark"] .my-note-box {
@@ -1360,12 +1372,20 @@ select {
   }
 
   .my-note-box__textarea {
-    min-height: 96px;
+    width: 100%;
+    min-height: 84px;
     padding: 10px 12px;
   }
 
   .my-note-box__buttons {
     gap: 6px;
+  }
+
+  .my-note-box__buttons .ghost-button,
+  .my-note-box__buttons .favorite-button {
+    min-height: 28px;
+    padding: 0 10px;
+    font-size: 11px;
   }
 
   .sentence-card__thai {
