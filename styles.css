@@ -926,8 +926,8 @@ select {
 
 .my-note-box__textarea {
   width: min(100%, 620px);
-  min-height: 88px;
-  padding: 12px 14px;
+  min-height: 48px;
+  padding: 8px 12px;
   resize: vertical;
   color: var(--text);
   background: rgba(255, 255, 255, 0.88);
@@ -936,6 +936,11 @@ select {
   outline: none;
   font: inherit;
   line-height: 1.6;
+}
+
+.my-note-box__textarea::placeholder {
+  font-size: 12px;
+  color: rgba(120, 110, 98, 0.86);
 }
 
 .my-note-box__textarea:focus {
@@ -1443,8 +1448,12 @@ select {
 
   .my-note-box__textarea {
     width: 100%;
-    min-height: 84px;
-    padding: 10px 12px;
+    min-height: 46px;
+    padding: 8px 10px;
+  }
+
+  .my-note-box__textarea::placeholder {
+    font-size: 11px;
   }
 
   .my-note-box__buttons {
