@@ -16,7 +16,6 @@ const state = {
 };
 
 const INLINE_DETAIL_BREAKPOINT = "(max-width: 1100px)";
-const MOBILE_BACK_TO_TOP_BREAKPOINT = "(max-width: 700px)";
 const BACK_TO_TOP_OFFSET = 320;
 
 const els = {
@@ -521,8 +520,7 @@ function isInlineDetailMode() {
 function updateBackToTopVisibility() {
   if (!els.backToTopBtn) return;
 
-  const isMobile = window.matchMedia(MOBILE_BACK_TO_TOP_BREAKPOINT).matches;
-  const shouldShow = isMobile && window.scrollY > BACK_TO_TOP_OFFSET;
+  const shouldShow = window.scrollY > BACK_TO_TOP_OFFSET;
   els.backToTopBtn.classList.toggle("hidden", !shouldShow);
 }
 

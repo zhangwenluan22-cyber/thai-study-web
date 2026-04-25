@@ -1308,9 +1308,3 @@ select {
     font-size: 24px;
   }
 }
-
-@media (min-width: 701px) {
-  .back-to-top {
-    display: none;
-  }
-}
