@@ -1190,9 +1190,9 @@ select {
   }
 
   .panel--list .panel__header {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-    gap: 6px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 8px;
   }
 
   .panel--list .panel__header h2 {
@@ -1201,12 +1201,14 @@ select {
   }
 
   .panel--list .panel__header-actions {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(92px, auto) auto;
     gap: 6px;
-    width: 100%;
+    width: auto;
+    align-items: end;
   }
 
   .panel--list .panel__hint {
+    grid-column: 1 / -1;
     font-size: 10px;
     white-space: nowrap;
     overflow: hidden;
@@ -1215,11 +1217,18 @@ select {
   }
 
   .field--sort {
-    min-width: 96px;
+    min-width: 0;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: auto minmax(92px, auto);
+    align-items: end;
+    gap: 4px;
   }
 
   .field--sort span {
     font-size: 10px;
+    line-height: 1;
+    padding-bottom: 8px;
   }
 
   .field--sort select {
