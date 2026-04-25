@@ -1191,7 +1191,7 @@ select {
 
   .panel--list .panel__header {
     grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
+    align-items: center;
     gap: 8px;
   }
 
@@ -1201,24 +1201,30 @@ select {
   }
 
   .panel--list .panel__header-actions {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      "sort showall"
+      "hint hint";
     gap: 6px;
-    width: auto;
-    align-items: start;
+    width: 100%;
+    align-items: center;
     justify-content: end;
     justify-items: end;
   }
 
   .panel--list .panel__hint {
-    grid-column: 1 / -1;
+    grid-area: hint;
     font-size: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     align-self: center;
+    justify-self: stretch;
+    text-align: right;
   }
 
   .field--sort {
+    grid-area: sort;
     min-width: 0;
     margin-top: 0;
     display: grid;
@@ -1226,6 +1232,7 @@ select {
     align-items: center;
     gap: 4px;
     justify-content: end;
+    align-self: center;
   }
 
   .field--sort span {
@@ -1248,6 +1255,10 @@ select {
 
   .list-top-button {
     display: none;
+  }
+
+  #show-all-btn {
+    grid-area: showall;
   }
 
   .panel--filters .panel__header {
