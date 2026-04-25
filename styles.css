@@ -959,7 +959,8 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .my-note-box__buttons .ghost-button,
