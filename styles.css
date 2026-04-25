@@ -395,9 +395,19 @@ select {
 
 .panel--list .panel__header-actions {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: end;
   justify-content: stretch;
+}
+
+.list-top-button.hidden {
+  display: none;
+}
+
+@media (min-width: 701px) {
+  .back-to-top {
+    display: none;
+  }
 }
 
 .panel__header-actions .ghost-button {
@@ -1077,6 +1087,10 @@ select {
     min-height: 30px;
     padding: 0 8px;
     font-size: 10px;
+  }
+
+  .list-top-button {
+    display: none;
   }
 
   .panel--filters .panel__header {

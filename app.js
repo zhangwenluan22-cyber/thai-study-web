@@ -16,6 +16,7 @@ const state = {
 };
 
 const INLINE_DETAIL_BREAKPOINT = "(max-width: 1100px)";
+const MOBILE_BACK_TO_TOP_BREAKPOINT = "(max-width: 700px)";
 const BACK_TO_TOP_OFFSET = 320;
 
 const els = {
@@ -34,6 +35,7 @@ const els = {
   practiceHint: document.querySelector("#practice-hint"),
   randomBtn: document.querySelector("#random-btn"),
   showAllBtn: document.querySelector("#show-all-btn"),
+  listTopBtn: document.querySelector("#list-top-btn"),
   themeToggle: document.querySelector("#theme-toggle"),
   sentenceList: document.querySelector("#sentence-list"),
   resultsHint: document.querySelector("#results-hint"),
@@ -150,6 +152,10 @@ function bindEvents() {
     renderList();
   });
 
+  els.listTopBtn?.addEventListener("click", () => {
+    els.sentenceList.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
   els.themeToggle.addEventListener("click", () => {
     const nextTheme = state.theme === "dark" ? "light" : "dark";
     applyTheme(nextTheme);
@@ -177,9 +183,11 @@ function bindEvents() {
   });
 
   window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+  els.sentenceList?.addEventListener("scroll", updateListTopVisibility, { passive: true });
 
   window.addEventListener("resize", () => {
     updateBackToTopVisibility();
+    updateListTopVisibility();
     renderList();
     const current = findSentence(state.selectedId);
     if (current) {
@@ -362,6 +370,7 @@ function renderList() {
         : `随机聚焦 1 条，可点“显示全部”返回 ${state.filteredSentences.length} 条`;
   els.statVisible.textContent = String(visibleSentences.length);
   els.statFavorites.textContent = String(state.favorites.size);
+  updateListTopVisibility();
 }
 
 function selectSentence(id, allowSpeech = false) {
@@ -520,8 +529,17 @@ function isInlineDetailMode() {
 function updateBackToTopVisibility() {
   if (!els.backToTopBtn) return;
 
-  const shouldShow = window.scrollY > BACK_TO_TOP_OFFSET;
+  const shouldShow =
+    window.matchMedia(MOBILE_BACK_TO_TOP_BREAKPOINT).matches && window.scrollY > BACK_TO_TOP_OFFSET;
   els.backToTopBtn.classList.toggle("hidden", !shouldShow);
+}
+
+function updateListTopVisibility() {
+  if (!els.listTopBtn || !els.sentenceList) return;
+
+  const isDesktopListMode = !isInlineDetailMode();
+  const shouldShow = isDesktopListMode && els.sentenceList.scrollTop > 120;
+  els.listTopBtn.classList.toggle("hidden", !shouldShow);
 }
 
 function formatCategory(item) {
