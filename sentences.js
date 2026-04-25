@@ -5393,7 +5393,7 @@ window.THAI_STUDY_DATA = {
       "thai": "ภาษาไทยของคุณดีมากค่ะ",
       "romanization": "phasa thai khong khun di mak kha",
       "difficulty": "入门",
-      "note": "",
+      "note": "khong → 的（表示所属）",
       "analysis": {
         "sentenceType": "陈述句",
         "tags": [
@@ -5401,7 +5401,7 @@ window.THAI_STUDY_DATA = {
           "语言",
           "入门"
         ],
-        "usage": "这是一个常用陈述句，可以先把整句当作固定表达来记。",
+        "usage": "khong → 的（表示所属）",
         "studyTip": "适合在“称赞 / 语言”这个场景先整句记忆，再跟读两到三遍。",
         "wordBreakdown": [
           {
@@ -5423,6 +5423,11 @@ window.THAI_STUDY_DATA = {
             "label": "中文核心意思",
             "value": "你的泰语很好",
             "hint": "先把这句的核心意思抓住，再去记具体说法。"
+          },
+          {
+            "label": "备注提醒",
+            "value": "khong → 的（表示所属）",
+            "hint": "这一条来自你原始词库里的备注信息。"
           }
         ],
         "extensions": [
