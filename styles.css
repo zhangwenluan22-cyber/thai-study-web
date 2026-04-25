@@ -1229,10 +1229,10 @@ select {
     margin-top: 0;
     display: grid;
     grid-template-columns: auto minmax(92px, auto);
-    align-items: center;
+    align-items: end;
     gap: 4px;
     justify-content: end;
-    align-self: center;
+    align-self: end;
   }
 
   .field--sort span {
@@ -1251,6 +1251,7 @@ select {
     min-height: 30px;
     padding: 0 8px;
     font-size: 10px;
+    align-self: end;
   }
 
   .list-top-button {
