@@ -430,6 +430,40 @@ select {
   line-height: 1.55;
 }
 
+.notes-manager {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 252, 247, 0.58);
+  border: 1px solid rgba(111, 98, 86, 0.12);
+}
+
+.notes-manager__title,
+.notes-manager__hint {
+  margin: 0;
+}
+
+.notes-manager__title {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.notes-manager__hint {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.notes-manager__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .field,
 .checkbox,
 .voice-box,
@@ -478,6 +512,11 @@ select {
 :root[data-theme="dark"] .field input,
 :root[data-theme="dark"] .field select {
   background: rgba(32, 44, 41, 0.94);
+  border-color: rgba(208, 221, 215, 0.08);
+}
+
+:root[data-theme="dark"] .notes-manager {
+  background: rgba(255, 255, 255, 0.03);
   border-color: rgba(208, 221, 215, 0.08);
 }
 
@@ -1111,6 +1150,30 @@ select {
     min-height: 32px;
     padding: 0 10px;
     font-size: 11px;
+  }
+
+  .notes-manager {
+    margin-top: 12px;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .notes-manager__title {
+    font-size: 13px;
+  }
+
+  .notes-manager__hint {
+    font-size: 11px;
+  }
+
+  .notes-manager__actions {
+    gap: 6px;
+  }
+
+  .notes-manager__actions .ghost-button {
+    min-height: 30px;
+    padding: 0 10px;
+    font-size: 10px;
   }
 
   .panel--list .panel__header {

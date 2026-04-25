@@ -38,6 +38,8 @@ const els = {
   practiceClearBtn: document.querySelector("#practice-clear-btn"),
   practiceHint: document.querySelector("#practice-hint"),
   randomBtn: document.querySelector("#random-btn"),
+  exportNotesBtn: document.querySelector("#export-notes-btn"),
+  importNotesBtn: document.querySelector("#import-notes-btn"),
   showAllBtn: document.querySelector("#show-all-btn"),
   listTopBtn: document.querySelector("#list-top-btn"),
   themeToggle: document.querySelector("#theme-toggle"),
@@ -151,6 +153,16 @@ function bindEvents() {
     document
       .querySelector(`.sentence-card[data-id="${randomItem.id}"]`)
       ?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+
+  els.exportNotesBtn?.addEventListener("click", () => {
+    exportMyNotes();
+  });
+
+  els.importNotesBtn?.addEventListener("click", () => {
+    pendingImportStatusElement = null;
+    els.notesImportInput.value = "";
+    els.notesImportInput.click();
   });
 
   els.showAllBtn.addEventListener("click", () => {
@@ -526,8 +538,6 @@ function buildMyNoteMarkup(item) {
         <span class="my-note-box__status">修改后需手动点保存，数据只保存在当前浏览器</span>
         <div class="my-note-box__buttons">
           <button class="ghost-button my-note-save-btn" type="button">保存我的备注</button>
-          <button class="ghost-button my-note-export-btn" type="button">导出我的备注</button>
-          <button class="ghost-button my-note-import-btn" type="button">导入我的备注</button>
           <button class="favorite-button my-note-clear-btn" type="button">清空</button>
         </div>
       </div>
@@ -543,8 +553,6 @@ function attachMyNoteControls(root, item) {
   const status = box.querySelector(".my-note-box__status");
   const saveBtn = box.querySelector(".my-note-save-btn");
   const clearBtn = box.querySelector(".my-note-clear-btn");
-  const exportBtn = box.querySelector(".my-note-export-btn");
-  const importBtn = box.querySelector(".my-note-import-btn");
 
   textarea?.addEventListener("input", () => {
     setNoteStatus(status, "已修改，记得点保存");
@@ -559,17 +567,6 @@ function attachMyNoteControls(root, item) {
     textarea.value = "";
     saveMyNote(item.id, "");
     setNoteStatus(status, "已清空当前句子的我的备注");
-  });
-
-  exportBtn?.addEventListener("click", () => {
-    exportMyNotes();
-    setNoteStatus(status, "已导出我的备注文件");
-  });
-
-  importBtn?.addEventListener("click", () => {
-    pendingImportStatusElement = status;
-    els.notesImportInput.value = "";
-    els.notesImportInput.click();
   });
 }
 
@@ -678,10 +675,18 @@ async function handleNotesImport(event) {
     state.myNotes = { ...state.myNotes, ...imported };
     localStorage.setItem(STORAGE_KEYS.myNotes, JSON.stringify(state.myNotes));
     const importedCount = Object.keys(imported).length;
-    setNoteStatus(pendingImportStatusElement, `已导入 ${importedCount} 条我的备注`);
+    if (pendingImportStatusElement) {
+      setNoteStatus(pendingImportStatusElement, `已导入 ${importedCount} 条我的备注`);
+    } else {
+      window.alert(`已导入 ${importedCount} 条我的备注`);
+    }
     syncVisibleMyNoteFields();
   } catch {
-    setNoteStatus(pendingImportStatusElement, "导入失败：请选择之前导出的备注文件");
+    if (pendingImportStatusElement) {
+      setNoteStatus(pendingImportStatusElement, "导入失败：请选择之前导出的备注文件");
+    } else {
+      window.alert("导入失败：请选择之前导出的备注文件");
+    }
   } finally {
     pendingImportStatusElement = null;
     event.target.value = "";
