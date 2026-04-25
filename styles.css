@@ -1229,15 +1229,15 @@ select {
     margin-top: 0;
     display: grid;
     grid-template-columns: auto minmax(92px, auto);
-    align-items: end;
+    align-items: center;
     gap: 4px;
     justify-content: end;
-    align-self: end;
+    align-self: center;
   }
 
   .field--sort span {
     font-size: 10px;
-    line-height: 1;
+    line-height: 30px;
     padding-bottom: 0;
   }
 
@@ -1251,7 +1251,7 @@ select {
     min-height: 30px;
     padding: 0 8px;
     font-size: 10px;
-    align-self: end;
+    align-self: center;
   }
 
   .list-top-button {
@@ -1260,7 +1260,7 @@ select {
 
   #show-all-btn {
     grid-area: showall;
-    align-self: end;
+    align-self: center;
   }
 
   .panel--filters .panel__header {
