@@ -1207,7 +1207,7 @@ select {
       "hint hint";
     gap: 6px;
     width: 100%;
-    align-items: center;
+    align-items: end;
     justify-content: end;
     justify-items: end;
   }
@@ -1259,6 +1259,7 @@ select {
 
   #show-all-btn {
     grid-area: showall;
+    align-self: end;
   }
 
   .panel--filters .panel__header {
