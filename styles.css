@@ -1204,7 +1204,7 @@ select {
     grid-template-columns: auto auto auto;
     grid-template-areas:
       "sort-label sort-select showall"
-      "hint hint";
+      "hint hint hint";
     gap: 6px;
     width: 100%;
     align-items: center;
