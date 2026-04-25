@@ -1191,7 +1191,7 @@ select {
 
   .panel--list .panel__header {
     grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
+    align-items: start;
     gap: 8px;
   }
 
@@ -1201,10 +1201,12 @@ select {
   }
 
   .panel--list .panel__header-actions {
-    grid-template-columns: auto minmax(92px, auto) auto;
+    grid-template-columns: auto auto auto;
     gap: 6px;
     width: auto;
-    align-items: end;
+    align-items: start;
+    justify-content: end;
+    justify-items: end;
   }
 
   .panel--list .panel__hint {
@@ -1221,14 +1223,15 @@ select {
     margin-top: 0;
     display: grid;
     grid-template-columns: auto minmax(92px, auto);
-    align-items: end;
+    align-items: center;
     gap: 4px;
+    justify-content: end;
   }
 
   .field--sort span {
     font-size: 10px;
     line-height: 1;
-    padding-bottom: 8px;
+    padding-bottom: 0;
   }
 
   .field--sort select {
