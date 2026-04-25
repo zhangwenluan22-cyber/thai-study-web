@@ -531,7 +531,7 @@ function buildMyNoteMarkup(item) {
       </p>
       <textarea
         class="my-note-box__textarea"
-        rows="4"
+        rows="2"
         placeholder="写下你自己的理解、提醒或临时想法"
       >${note}</textarea>
       <div class="my-note-box__actions">
